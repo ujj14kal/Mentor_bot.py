@@ -1,0 +1,8 @@
+telethon>=1.36.0
+groq>=0.11.0
+gspread>=6.0.0
+google-auth>=2.29.0
+apscheduler>=3.10.4
+python-dotenv>=1.0.1
+aiosqlite>=0.20.0
+cryptg>=0.4.0

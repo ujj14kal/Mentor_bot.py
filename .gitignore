@@ -1,0 +1,30 @@
+# Session files — NEVER commit these
+*.session
+*.session-journal
+
+# Environment
+.env
+
+# Google credentials
+google_creds.json
+
+# Database
+data/*.db
+data/*.db-journal
+
+# Reports (optional)
+data/reports/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Old bot code backup
+mentor_bot_old.py
