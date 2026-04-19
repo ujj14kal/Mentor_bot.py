@@ -74,8 +74,8 @@ SCHEDULE = {
         "description": "Afternoon — task update check",
     },
     "evening": {
-        "start_hour": 20, "start_min": 0,
-        "end_hour": 20, "end_min": 45,
+        "start_hour": 19, "start_min": 0,
+        "end_hour": 21, "end_min": 0,
         "description": "Evening — appreciate completions, ask for pending",
     },
 }

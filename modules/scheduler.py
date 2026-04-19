@@ -408,9 +408,9 @@ async def check_for_missed_windows(client):
 
     # ── Check-in Windows Catch-up ──
     for window_name, times in SCHEDULE.items():
-        # Check if we are within 1 hour of the window start
+        # Check if we are within the window (from start_hour to end_hour)
         start = now.replace(hour=times["start_hour"], minute=times["start_min"], second=0, microsecond=0)
-        end = start + timedelta(hours=1)
+        end = now.replace(hour=times["end_hour"], minute=times["end_min"], second=0, microsecond=0)
 
         if start <= now <= end:
             # Check if we already have pending checkins for this window today
@@ -429,3 +429,7 @@ async def check_for_missed_windows(client):
     if audit_start <= now <= audit_end:
         log.info("Startup catch-up: 11 PM Audit window active. Running now.")
         asyncio.create_task(_run_daily_audit(client))
+        # Also run the 11:15 PM report if we are past that time
+        report_start = now.replace(hour=23, minute=15, second=0, microsecond=0)
+        if now >= report_start:
+            asyncio.create_task(report_generator.generate_daily_report(client))
