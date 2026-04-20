@@ -148,3 +148,131 @@ cheduled jobs registered
 2026-04-20 07:02:12,052 | INFO    | mentor_system        | Saved Messages command received: Status
 2026-04-20 07:02:38,062 | INFO    | mentor_system        | Saved Messages command received: Yes
 2026-04-20 07:02:38,062 | INFO    | mentor_system        | Saved Messages command received: Yes
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 07:07:50,026 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:07:50,026 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:07:50,072 | WARNING | telethon.network.mtprotosender | Attempt 1 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:07:50,072 | WARNING | telethon.network.mtprotosender | Attempt 1 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:07:56,331 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:07:56,331 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:07:56,338 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:07:56,338 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:07:56,352 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:07:56,352 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:07:56,386 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected and no check-ins found for today. Triggering now.
+2026-04-20 07:07:56,386 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected and no check-ins found for today. Triggering now.
+2026-04-20 07:07:56,387 | INFO    | modules.scheduler    | Starting morning check-in window (Monday)
+2026-04-20 07:07:56,387 | INFO    | modules.scheduler    | Starting morning check-in window (Monday)
+2026-04-20 07:07:56,387 | INFO    | modules.ops_monitor  | Running morning OPS group check...
+2026-04-20 07:07:56,387 | INFO    | modules.ops_monitor  | Running morning OPS group check...
+2026-04-20 07:07:56,703 | INFO    | modules.ops_monitor  | Morning OPS check: reviewed 13 recent messages
+2026-04-20 07:07:56,703 | INFO    | modules.ops_monitor  | Morning OPS check: reviewed 13 recent messages
+2026-04-20 07:07:56,705 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:07:56,705 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:07:57,014 | INFO    | modules.inactive_manager | Marked Chandrima Adhikary as inactive (999 days silent)
+2026-04-20 07:07:57,014 | INFO    | modules.inactive_manager | Marked Chandrima Adhikary as inactive (999 days silent)
+2026-04-20 07:07:57,019 | INFO    | modules.inactive_manager | Marked Noel Mondal as inactive (999 days silent)
+2026-04-20 07:07:57,019 | INFO    | modules.inactive_manager | Marked Noel Mondal as inactive (999 days silent)
+2026-04-20 07:07:57,023 | INFO    | modules.inactive_manager | Marked Aayushi Verma as inactive (999 days silent)
+2026-04-20 07:07:57,023 | INFO    | modules.inactive_manager | Marked Aayushi Verma as inactive (999 days silent)
+2026-04-20 07:07:57,028 | INFO    | modules.inactive_manager | Marked Dhvani Parmar as inactive (999 days silent)
+2026-04-20 07:07:57,028 | INFO    | modules.inactive_manager | Marked Dhvani Parmar as inactive (999 days silent)
+2026-04-20 07:07:57,032 | INFO    | modules.inactive_manager | Marked Dibyayan as inactive (999 days silent)
+2026-04-20 07:07:57,032 | INFO    | modules.inactive_manager | Marked Dibyayan as inactive (999 days silent)
+2026-04-20 07:07:57,035 | INFO    | modules.inactive_manager | Marked Mahesh Vind as inactive (999 days silent)
+2026-04-20 07:07:57,035 | INFO    | modules.inactive_manager | Marked Mahesh Vind as inactive (999 days silent)
+2026-04-20 07:07:57,038 | INFO    | modules.inactive_manager | Marked Abhinav Kumar as inactive (999 days silent)
+2026-04-20 07:07:57,038 | INFO    | modules.inactive_manager | Marked Abhinav Kumar as inactive (999 days silent)
+2026-04-20 07:07:57,039 | INFO    | modules.inactive_manager | Marked Kshitij as inactive (999 days silent)
+2026-04-20 07:07:57,039 | INFO    | modules.inactive_manager | Marked Kshitij as inactive (999 days silent)
+2026-04-20 07:07:57,041 | INFO    | modules.inactive_manager | Marked Shivangi Bariar as inactive (999 days silent)
+2026-04-20 07:07:57,041 | INFO    | modules.inactive_manager | Marked Shivangi Bariar as inactive (999 days silent)
+2026-04-20 07:07:57,043 | INFO    | modules.inactive_manager | Marked Kush Vyas as inactive (999 days silent)
+2026-04-20 07:07:57,043 | INFO    | modules.inactive_manager | Marked Kush Vyas as inactive (999 days silent)
+2026-04-20 07:07:57,044 | INFO    | modules.inactive_manager | Marked Sundaram Chaudhary as inactive (999 days silent)
+2026-04-20 07:07:57,044 | INFO    | modules.inactive_manager | Marked Sundaram Chaudhary as inactive (999 days silent)
+2026-04-20 07:07:57,046 | INFO    | modules.inactive_manager | Marked Abhishek Soni as inactive (999 days silent)
+2026-04-20 07:07:57,046 | INFO    | modules.inactive_manager | Marked Abhishek Soni as inactive (999 days silent)
+2026-04-20 07:07:57,047 | INFO    | modules.inactive_manager | Marked Piyush Arora as inactive (999 days silent)
+2026-04-20 07:07:57,047 | INFO    | modules.inactive_manager | Marked Piyush Arora as inactive (999 days silent)
+2026-04-20 07:07:57,048 | INFO    | modules.inactive_manager | Marked Tuba Ansari as inactive (999 days silent)
+2026-04-20 07:07:57,048 | INFO    | modules.inactive_manager | Marked Tuba Ansari as inactive (999 days silent)
+2026-04-20 07:07:57,050 | INFO    | modules.inactive_manager | Marked Rakesh Swain as inactive (999 days silent)
+2026-04-20 07:07:57,050 | INFO    | modules.inactive_manager | Marked Rakesh Swain as inactive (999 days silent)
+2026-04-20 07:07:57,051 | INFO    | modules.inactive_manager | Marked Aditya Butle as inactive (999 days silent)
+2026-04-20 07:07:57,051 | INFO    | modules.inactive_manager | Marked Aditya Butle as inactive (999 days silent)
+2026-04-20 07:07:57,053 | INFO    | modules.inactive_manager | Marked Bhavin as inactive (999 days silent)
+2026-04-20 07:07:57,053 | INFO    | modules.inactive_manager | Marked Bhavin as inactive (999 days silent)
+2026-04-20 07:07:57,054 | INFO    | modules.inactive_manager | Marked Nishchith as inactive (999 days silent)
+2026-04-20 07:07:57,054 | INFO    | modules.inactive_manager | Marked Nishchith as inactive (999 days silent)
+2026-04-20 07:07:57,055 | INFO    | modules.inactive_manager | Marked Namrata Bag as inactive (999 days silent)
+2026-04-20 07:07:57,055 | INFO    | modules.inactive_manager | Marked Namrata Bag as inactive (999 days silent)
+2026-04-20 07:07:57,057 | INFO    | modules.inactive_manager | Marked Pruthviraj Parmar as inactive (999 days silent)
+2026-04-20 07:07:57,057 | INFO    | modules.inactive_manager | Marked Pruthviraj Parmar as inactive (999 days silent)
+2026-04-20 07:07:57,058 | INFO    | modules.inactive_manager | Marked Shreya Kashish as inactive (999 days silent)
+2026-04-20 07:07:57,058 | INFO    | modules.inactive_manager | Marked Shreya Kashish as inactive (999 days silent)
+2026-04-20 07:07:57,059 | INFO    | modules.inactive_manager | Marked Pagidala Manognya as inactive (999 days silent)
+2026-04-20 07:07:57,059 | INFO    | modules.inactive_manager | Marked Pagidala Manognya as inactive (999 days silent)
+2026-04-20 07:07:57,060 | INFO    | modules.inactive_manager | Marked Rajnish Pandey as inactive (999 days silent)
+2026-04-20 07:07:57,060 | INFO    | modules.inactive_manager | Marked Rajnish Pandey as inactive (999 days silent)
+2026-04-20 07:07:57,062 | INFO    | modules.inactive_manager | Marked Mitali Mittal as inactive (999 days silent)
+2026-04-20 07:07:57,062 | INFO    | modules.inactive_manager | Marked Mitali Mittal as inactive (999 days silent)
+2026-04-20 07:07:57,063 | INFO    | modules.inactive_manager | Marked Tareen G Khan as inactive (999 days silent)
+2026-04-20 07:07:57,063 | INFO    | modules.inactive_manager | Marked Tareen G Khan as inactive (999 days silent)
+2026-04-20 07:07:57,064 | INFO    | modules.inactive_manager | Marked Siman Sangeeta as inactive (999 days silent)
+2026-04-20 07:07:57,064 | INFO    | modules.inactive_manager | Marked Siman Sangeeta as inactive (999 days silent)
+2026-04-20 07:07:57,066 | INFO    | modules.inactive_manager | Marked Sravya G as inactive (999 days silent)
+2026-04-20 07:07:57,066 | INFO    | modules.inactive_manager | Marked Sravya G as inactive (999 days silent)
+2026-04-20 07:07:57,067 | INFO    | modules.inactive_manager | Marked Elakkiya as inactive (999 days silent)
+2026-04-20 07:07:57,067 | INFO    | modules.inactive_manager | Marked Elakkiya as inactive (999 days silent)
+2026-04-20 07:07:57,068 | INFO    | modules.inactive_manager | Marked Rohit N Nikhade as inactive (999 days silent)
+2026-04-20 07:07:57,068 | INFO    | modules.inactive_manager | Marked Rohit N Nikhade as inactive (999 days silent)
+2026-04-20 07:07:57,070 | INFO    | modules.inactive_manager | Marked Vikas Detwani as inactive (999 days silent)
+2026-04-20 07:07:57,070 | INFO    | modules.inactive_manager | Marked Vikas Detwani as inactive (999 days silent)
+2026-04-20 07:07:57,071 | INFO    | modules.inactive_manager | Marked Sreeja Vattikoti as inactive (999 days silent)
+2026-04-20 07:07:57,071 | INFO    | modules.inactive_manager | Marked Sreeja Vattikoti as inactive (999 days silent)
+2026-04-20 07:07:57,072 | INFO    | modules.inactive_manager | Marked Vishal Bandi as inactive (999 days silent)
+2026-04-20 07:07:57,072 | INFO    | modules.inactive_manager | Marked Vishal Bandi as inactive (999 days silent)
+2026-04-20 07:07:57,073 | INFO    | modules.inactive_manager | Marked Payal Rani as inactive (999 days silent)
+2026-04-20 07:07:57,073 | INFO    | modules.inactive_manager | Marked Payal Rani as inactive (999 days silent)
+2026-04-20 07:07:57,074 | INFO    | modules.inactive_manager | Marked Pranjal Pareek as inactive (999 days silent)
+2026-04-20 07:07:57,074 | INFO    | modules.inactive_manager | Marked Pranjal Pareek as inactive (999 days silent)
+2026-04-20 07:07:57,075 | INFO    | modules.inactive_manager | Marked Aarzoo Rawat as inactive (999 days silent)
+2026-04-20 07:07:57,075 | INFO    | modules.inactive_manager | Marked Aarzoo Rawat as inactive (999 days silent)
+2026-04-20 07:07:57,076 | INFO    | modules.inactive_manager | Marked Aditya Mittal as inactive (999 days silent)
+2026-04-20 07:07:57,076 | INFO    | modules.inactive_manager | Marked Aditya Mittal as inactive (999 days silent)
+2026-04-20 07:07:57,077 | INFO    | modules.inactive_manager | Marked ISHU as inactive (999 days silent)
+2026-04-20 07:07:57,077 | INFO    | modules.inactive_manager | Marked ISHU as inactive (999 days silent)
+2026-04-20 07:07:57,078 | INFO    | modules.inactive_manager | Marked Sahithi Gandham as inactive (999 days silent)
+2026-04-20 07:07:57,078 | INFO    | modules.inactive_manager | Marked Sahithi Gandham as inactive (999 days silent)
+2026-04-20 07:07:57,079 | INFO    | modules.inactive_manager | Marked Pooja as inactive (999 days silent)
+2026-04-20 07:07:57,079 | INFO    | modules.inactive_manager | Marked Pooja as inactive (999 days silent)
+2026-04-20 07:07:57,973 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:07:57,973 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:07:58,442 | INFO    | modules.confirmation | Confirmation requested for morning window (1 messages)
+2026-04-20 07:07:58,442 | INFO    | modules.confirmation | Confirmation requested for morning window (1 messages)
+2026-04-20 07:07:58,443 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<_run_checkin_window() done, defined at /Users/ujjwalkalra14/MentorBot/modules/scheduler.py:147> exception=RuntimeError("Task <Task pending name='Task-13' coro=<_run_checkin_window() running at /Users/ujjwalkalra14/MentorBot/modules/scheduler.py:218>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/scheduler.py", line 218, in _run_checkin_window
+    approved = await confirmation.request_confirmation(client, window, messages)
+  File "/Users/ujjwalkalra14/MentorBot/modules/confirmation.py", line 77, in request_confirmation
+    await _confirmation_event.wait()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 226, in wait
+    await fut
+RuntimeError: Task <Task pending name='Task-13' coro=<_run_checkin_window() running at /Users/ujjwalkalra14/MentorBot/modules/scheduler.py:218>> got Future <Future pending> attached to a different loop
+2026-04-20 07:07:58,443 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<_run_checkin_window() done, defined at /Users/ujjwalkalra14/MentorBot/modules/scheduler.py:147> exception=RuntimeError("Task <Task pending name='Task-13' coro=<_run_checkin_window() running at /Users/ujjwalkalra14/MentorBot/modules/scheduler.py:218>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/scheduler.py", line 218, in _run_checkin_window
+    approved = await confirmation.request_confirmation(client, window, messages)
+  File "/Users/ujjwalkalra14/MentorBot/modules/confirmation.py", line 77, in request_confirmation
+    await _confirmation_event.wait()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 226, in wait
+    await fut
+RuntimeError: Task <Task pending name='Task-13' coro=<_run_checkin_window() running at /Users/ujjwalkalra14/MentorBot/modules/scheduler.py:218>> got Future <Future pending> attached to a different loop

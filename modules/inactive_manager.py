@@ -30,6 +30,21 @@ async def check_and_update_inactive(client):
         chat_id = student["chat_id"]
         name = student["name"]
         days = await tracker.days_since_last_message(chat_id)
+        
+        # Skip students added in the last 24 hours to give them a chance to send their first message
+        created_at = student.get("created_at")
+        if created_at:
+            try:
+                # Handle potential space instead of T in created_at from SQLite
+                if " " in created_at and "T" not in created_at:
+                    created_at = created_at.replace(" ", "T")
+                created_dt = datetime.fromisoformat(created_at)
+                if created_dt.tzinfo is None:
+                    created_dt = created_dt.replace(tzinfo=ZoneInfo(TIMEZONE))
+                if (tracker.now_ist() - created_dt).total_seconds() < 86400: # 24 hours
+                    continue
+            except (ValueError, TypeError):
+                pass
 
         if days >= INACTIVE_DAYS_THRESHOLD and student.get("status") == "active":
             await tracker.mark_student_inactive(chat_id)

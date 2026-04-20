@@ -125,17 +125,29 @@ def weekday_name() -> str:
 # STUDENT OPERATIONS
 # ─────────────────────────────────────────────────────────────
 async def upsert_student(chat_id: int, name: str, batch: str = "",
-                         google_sheet_id: str = ""):
+                         google_sheet_id: str = "", status: str = "active"):
     """Insert or update a student record."""
+    # Check if student exists to preserve status unless explicitly provided
+    existing = await get_student(chat_id)
+    
     async with aiosqlite.connect(DB_PATH) as db:
-        await db.execute("""
-            INSERT INTO students (chat_id, name, batch, google_sheet_id)
-            VALUES (?, ?, ?, ?)
-            ON CONFLICT(chat_id) DO UPDATE SET
-                name=excluded.name,
-                batch=excluded.batch,
-                google_sheet_id=excluded.google_sheet_id
-        """, (chat_id, name, batch, google_sheet_id))
+        if not existing:
+            # New student: set initial status and current time as last_message_at
+            # so they don't get marked inactive immediately
+            await db.execute("""
+                INSERT INTO students (chat_id, name, batch, google_sheet_id, status, last_message_at)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (chat_id, name, batch, google_sheet_id, status, now_ist().isoformat()))
+        else:
+            # Existing student: update info and status
+            await db.execute("""
+                UPDATE students SET
+                    name = ?,
+                    batch = ?,
+                    google_sheet_id = ?,
+                    status = ?
+                WHERE chat_id = ?
+            """, (name, batch, google_sheet_id, status, chat_id))
         await db.commit()
 
 
@@ -198,11 +210,20 @@ async def mark_student_inactive(chat_id: int):
 async def days_since_last_message(chat_id: int) -> int:
     """Calculate days since the student last sent a message."""
     student = await get_student(chat_id)
-    if not student or not student.get("last_message_at"):
+    if not student:
         return 999
 
+    # Fallback to created_at if last_message_at is missing
+    last_ts = student.get("last_message_at") or student.get("created_at")
+    if not last_ts:
+        return 0
+
     try:
-        last = datetime.fromisoformat(student["last_message_at"])
+        # Standardize format (replace space with T if needed)
+        if " " in last_ts and "T" not in last_ts:
+            last_ts = last_ts.replace(" ", "T")
+            
+        last = datetime.fromisoformat(last_ts)
         if last.tzinfo is None:
             last = last.replace(tzinfo=ZoneInfo(TIMEZONE))
         return max(0, (now_ist() - last).days)

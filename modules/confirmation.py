@@ -16,7 +16,15 @@ log = logging.getLogger(__name__)
 
 # Track which window is currently awaiting confirmation
 _pending_window = None
-_confirmation_event = asyncio.Event()
+_confirmation_event: asyncio.Event | None = None
+
+
+def _get_confirmation_event() -> asyncio.Event:
+    """Lazily initialize the confirmation event in the current loop."""
+    global _confirmation_event
+    if _confirmation_event is None:
+        _confirmation_event = asyncio.Event()
+    return _confirmation_event
 
 
 def get_pending_window() -> str | None:
@@ -32,7 +40,7 @@ async def request_confirmation(client, window: str, messages: list[dict]):
     """
     global _pending_window
     _pending_window = window
-    _confirmation_event.clear()
+    _get_confirmation_event().clear()
 
     # Build preview
     window_label = {
@@ -74,9 +82,9 @@ async def request_confirmation(client, window: str, messages: list[dict]):
 
     # Wait indefinitely for confirmation
     # The event is set by handle_confirmation_reply when user responds
-    await _confirmation_event.wait()
+    await _get_confirmation_event().wait()
 
-    result = _confirmation_event.is_set()
+    result = _get_confirmation_event().is_set()
     _pending_window = None
     return result
 
@@ -98,7 +106,7 @@ async def handle_confirmation_reply(event, client):
     if _pending_window and text in ("yes", "send", "y"):
         window = _pending_window
         await tracker.approve_checkins(window)
-        _confirmation_event.set()
+        _get_confirmation_event().set()
         await client.send_message(
             YOUR_TELEGRAM_ID,
             f"Approved. Sending {window} check-ins now."
@@ -107,7 +115,7 @@ async def handle_confirmation_reply(event, client):
         return True
 
     if _pending_window and text in ("skip", "no", "n"):
-        _confirmation_event.set()
+        _get_confirmation_event().set()
         await client.send_message(
             YOUR_TELEGRAM_ID,
             f"Skipped {_pending_window} check-ins."

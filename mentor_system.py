@@ -90,6 +90,7 @@ async def main():
             name=info["name"],
             batch=info.get("batch", ""),
             google_sheet_id=info.get("google_sheet_id", ""),
+            status=info.get("status", "active"),
         )
 
     # Create Telethon client (your personal account)
@@ -100,6 +101,38 @@ async def main():
 
     me = await client.get_me()
     log.info(f"Logged in as: {me.first_name} (@{me.username}), ID: {me.id}")
+
+    # ── STARTUP ACTIVITY CHECK ───────────────────────────
+    # Check for messages that were sent while the bot was offline
+    # This ensures students are correctly mapped as "active"
+    log.info("Running startup activity check for all students...")
+    all_db_students = await tracker.get_all_students()
+    for student in all_db_students:
+        cid = student["chat_id"]
+        # Only check if last_message_at is missing OR if we want to be thorough
+        # For now, let's check everyone to ensure perfect mapping
+        try:
+            # Get the very last message from this chat
+            async for message in client.iter_messages(cid, limit=1):
+                # If the message is from the student (not from the bot/Shraddha)
+                # we update the last_message_at timestamp
+                if message.sender_id != me.id:
+                    msg_ts = message.date.astimezone(tracker.ZoneInfo(TIMEZONE))
+                    
+                    # Update DB if this message is newer than what we have
+                    current_last = student.get("last_message_at")
+                    if not current_last or msg_ts.isoformat() > current_last:
+                        import aiosqlite
+                        from config import DB_PATH
+                        async with aiosqlite.connect(DB_PATH) as db:
+                            await db.execute(
+                                "UPDATE students SET last_message_at = ?, status = 'active' WHERE chat_id = ?",
+                                (msg_ts.isoformat(), cid)
+                            )
+                            await db.commit()
+                        log.info(f"Startup catch-up: Updated activity for {student['name']} ({msg_ts.strftime('%Y-%m-%d %H:%M')})")
+        except Exception as e:
+            log.warning(f"Could not check activity for {student['name']}: {e}")
 
     if me.id != YOUR_TELEGRAM_ID:
         log.warning(
