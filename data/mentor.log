@@ -4363,3 +4363,169 @@ sqlite3.OperationalError: database is locked
 2026-04-20 12:58:41,148 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-04-20 12:58:41,149 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
 2026-04-20 12:58:41,149 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:59:41,318 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:59:41,318 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:59:41,320 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 12:59:41,320 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 13:01:41,450 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:01:41,450 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:01:41,452 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)
+2026-04-20 13:01:41,452 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)
+2026-04-20 13:01:52,569 | WARNING | telethon.network.connection.connection | Server closed the connection: [Errno 54] Connection reset by peer
+2026-04-20 13:01:52,569 | WARNING | telethon.network.connection.connection | Server closed the connection: [Errno 54] Connection reset by peer
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+ERROR: Another instance is already running.
+Kill it first, or delete data/mentor.lock if it's stale.
+2026-04-20 13:02:47,080 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 13:02:47,080 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 13:02:47,966 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 13:02:47,966 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 13:02:47,967 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 13:02:47,967 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 13:02:48,070 | INFO    | mentor_system        | Startup catch-up: Updated Chandrima Adhikary to active (Last: 2026-04-20 10:43)
+2026-04-20 13:02:48,070 | INFO    | mentor_system        | Startup catch-up: Updated Chandrima Adhikary to active (Last: 2026-04-20 10:43)
+2026-04-20 13:02:48,070 | INFO    | mentor_system        | Startup catch-up: queuing reply for Chandrima Adhikary (msg_id=1190)
+2026-04-20 13:02:48,070 | INFO    | mentor_system        | Startup catch-up: queuing reply for Chandrima Adhikary (msg_id=1190)
+2026-04-20 13:02:48,222 | INFO    | mentor_system        | Startup catch-up: Updated Noel Mondal to active (Last: 2026-04-20 12:34)
+2026-04-20 13:02:48,222 | INFO    | mentor_system        | Startup catch-up: Updated Noel Mondal to active (Last: 2026-04-20 12:34)
+2026-04-20 13:02:48,222 | INFO    | mentor_system        | Startup catch-up: queuing reply for Noel Mondal (msg_id=1115)
+2026-04-20 13:02:48,222 | INFO    | mentor_system        | Startup catch-up: queuing reply for Noel Mondal (msg_id=1115)
+2026-04-20 13:02:48,410 | INFO    | mentor_system        | Startup catch-up: Updated Aayushi Verma to active (Last: 2026-04-20 09:35)
+2026-04-20 13:02:48,410 | INFO    | mentor_system        | Startup catch-up: Updated Aayushi Verma to active (Last: 2026-04-20 09:35)
+2026-04-20 13:02:48,410 | INFO    | mentor_system        | Startup catch-up: queuing reply for Aayushi Verma (msg_id=615)
+2026-04-20 13:02:48,410 | INFO    | mentor_system        | Startup catch-up: queuing reply for Aayushi Verma (msg_id=615)
+2026-04-20 13:02:49,559 | INFO    | mentor_system        | Startup catch-up: Updated Sundaram Chaudhary to active (Last: 2026-04-20 12:11)
+2026-04-20 13:02:49,559 | INFO    | mentor_system        | Startup catch-up: Updated Sundaram Chaudhary to active (Last: 2026-04-20 12:11)
+2026-04-20 13:02:49,559 | INFO    | mentor_system        | Startup catch-up: queuing reply for Sundaram Chaudhary (msg_id=1884)
+2026-04-20 13:02:49,559 | INFO    | mentor_system        | Startup catch-up: queuing reply for Sundaram Chaudhary (msg_id=1884)
+2026-04-20 13:02:49,758 | INFO    | mentor_system        | Startup catch-up: Updated Piyush Arora to active (Last: 2026-04-20 07:43)
+2026-04-20 13:02:49,758 | INFO    | mentor_system        | Startup catch-up: Updated Piyush Arora to active (Last: 2026-04-20 07:43)
+2026-04-20 13:02:49,758 | INFO    | mentor_system        | Startup catch-up: queuing reply for Piyush Arora (msg_id=911)
+2026-04-20 13:02:49,758 | INFO    | mentor_system        | Startup catch-up: queuing reply for Piyush Arora (msg_id=911)
+2026-04-20 13:02:50,096 | INFO    | mentor_system        | Startup catch-up: Updated Aditya Butle to active (Last: 2026-04-20 09:33)
+2026-04-20 13:02:50,096 | INFO    | mentor_system        | Startup catch-up: Updated Aditya Butle to active (Last: 2026-04-20 09:33)
+2026-04-20 13:02:50,096 | INFO    | mentor_system        | Startup catch-up: queuing reply for Aditya Butle (msg_id=408)
+2026-04-20 13:02:50,096 | INFO    | mentor_system        | Startup catch-up: queuing reply for Aditya Butle (msg_id=408)
+2026-04-20 13:02:50,200 | INFO    | mentor_system        | Startup catch-up: Updated Bhavin to active (Last: 2026-04-20 10:33)
+2026-04-20 13:02:50,200 | INFO    | mentor_system        | Startup catch-up: Updated Bhavin to active (Last: 2026-04-20 10:33)
+2026-04-20 13:02:50,200 | INFO    | mentor_system        | Startup catch-up: queuing reply for Bhavin (msg_id=610)
+2026-04-20 13:02:50,200 | INFO    | mentor_system        | Startup catch-up: queuing reply for Bhavin (msg_id=610)
+2026-04-20 13:02:51,262 | INFO    | mentor_system        | Startup catch-up: Updated Pruthviraj Parmar to active (Last: 2026-04-20 08:51)
+2026-04-20 13:02:51,262 | INFO    | mentor_system        | Startup catch-up: Updated Pruthviraj Parmar to active (Last: 2026-04-20 08:51)
+2026-04-20 13:02:51,262 | INFO    | mentor_system        | Startup catch-up: queuing reply for Pruthviraj Parmar (msg_id=966)
+2026-04-20 13:02:51,262 | INFO    | mentor_system        | Startup catch-up: queuing reply for Pruthviraj Parmar (msg_id=966)
+2026-04-20 13:02:51,360 | INFO    | mentor_system        | Startup catch-up: Updated Shreya Kashish to active (Last: 2026-04-20 11:02)
+2026-04-20 13:02:51,360 | INFO    | mentor_system        | Startup catch-up: Updated Shreya Kashish to active (Last: 2026-04-20 11:02)
+2026-04-20 13:02:51,360 | INFO    | mentor_system        | Startup catch-up: queuing reply for Shreya Kashish (msg_id=2072)
+2026-04-20 13:02:51,360 | INFO    | mentor_system        | Startup catch-up: queuing reply for Shreya Kashish (msg_id=2072)
+2026-04-20 13:02:51,657 | INFO    | mentor_system        | Startup catch-up: Updated Rajnish Pandey to active (Last: 2026-04-20 12:42)
+2026-04-20 13:02:51,657 | INFO    | mentor_system        | Startup catch-up: Updated Rajnish Pandey to active (Last: 2026-04-20 12:42)
+2026-04-20 13:02:51,658 | INFO    | mentor_system        | Startup catch-up: queuing reply for Rajnish Pandey (msg_id=760)
+2026-04-20 13:02:51,658 | INFO    | mentor_system        | Startup catch-up: queuing reply for Rajnish Pandey (msg_id=760)
+2026-04-20 13:02:51,853 | INFO    | mentor_system        | Startup catch-up: Updated Tareen G Khan to active (Last: 2026-04-20 10:39)
+2026-04-20 13:02:51,853 | INFO    | mentor_system        | Startup catch-up: Updated Tareen G Khan to active (Last: 2026-04-20 10:39)
+2026-04-20 13:02:51,853 | INFO    | mentor_system        | Startup catch-up: queuing reply for Tareen G Khan (msg_id=603)
+2026-04-20 13:02:51,853 | INFO    | mentor_system        | Startup catch-up: queuing reply for Tareen G Khan (msg_id=603)
+2026-04-20 13:02:52,351 | INFO    | mentor_system        | Startup catch-up: Updated Divyansh Thakur to active (Last: 2026-04-20 09:52)
+2026-04-20 13:02:52,351 | INFO    | mentor_system        | Startup catch-up: Updated Divyansh Thakur to active (Last: 2026-04-20 09:52)
+2026-04-20 13:02:52,351 | INFO    | mentor_system        | Startup catch-up: queuing reply for Divyansh Thakur (msg_id=1241)
+2026-04-20 13:02:52,351 | INFO    | mentor_system        | Startup catch-up: queuing reply for Divyansh Thakur (msg_id=1241)
+2026-04-20 13:02:52,929 | INFO    | mentor_system        | Startup catch-up: Updated Rohit N Nikhade to active (Last: 2026-04-20 09:21)
+2026-04-20 13:02:52,929 | INFO    | mentor_system        | Startup catch-up: Updated Rohit N Nikhade to active (Last: 2026-04-20 09:21)
+2026-04-20 13:02:52,929 | INFO    | mentor_system        | Startup catch-up: queuing reply for Rohit N Nikhade (msg_id=775)
+2026-04-20 13:02:52,929 | INFO    | mentor_system        | Startup catch-up: queuing reply for Rohit N Nikhade (msg_id=775)
+2026-04-20 13:02:53,046 | INFO    | mentor_system        | Startup catch-up: Updated Vikas Detwani to active (Last: 2026-04-20 08:18)
+2026-04-20 13:02:53,046 | INFO    | mentor_system        | Startup catch-up: Updated Vikas Detwani to active (Last: 2026-04-20 08:18)
+2026-04-20 13:02:53,046 | INFO    | mentor_system        | Startup catch-up: queuing reply for Vikas Detwani (msg_id=733)
+2026-04-20 13:02:53,046 | INFO    | mentor_system        | Startup catch-up: queuing reply for Vikas Detwani (msg_id=733)
+2026-04-20 13:02:53,329 | INFO    | mentor_system        | Startup catch-up: Updated Vishal Bandi to active (Last: 2026-04-20 12:10)
+2026-04-20 13:02:53,329 | INFO    | mentor_system        | Startup catch-up: Updated Vishal Bandi to active (Last: 2026-04-20 12:10)
+2026-04-20 13:02:53,329 | INFO    | mentor_system        | Startup catch-up: queuing reply for Vishal Bandi (msg_id=480)
+2026-04-20 13:02:53,329 | INFO    | mentor_system        | Startup catch-up: queuing reply for Vishal Bandi (msg_id=480)
+2026-04-20 13:02:53,889 | INFO    | mentor_system        | Startup catch-up: Updated Aarzoo Rawat to active (Last: 2026-04-20 11:02)
+2026-04-20 13:02:53,889 | INFO    | mentor_system        | Startup catch-up: Updated Aarzoo Rawat to active (Last: 2026-04-20 11:02)
+2026-04-20 13:02:53,889 | INFO    | mentor_system        | Startup catch-up: queuing reply for Aarzoo Rawat (msg_id=733)
+2026-04-20 13:02:53,889 | INFO    | mentor_system        | Startup catch-up: queuing reply for Aarzoo Rawat (msg_id=733)
+2026-04-20 13:02:54,396 | INFO    | mentor_system        | Startup catch-up: 16 students need replies. Processing sequentially...
+2026-04-20 13:02:54,396 | INFO    | mentor_system        | Startup catch-up: 16 students need replies. Processing sequentially...
+2026-04-20 13:03:02,185 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:03:02,185 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:03:02,187 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 13:03:02,187 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 13:03:17,356 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:03:17,356 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:03:17,358 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 13:03:17,358 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 13:03:47,483 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:03:47,483 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:03:47,485 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 13:03:47,485 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 13:04:47,944 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:04:47,944 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:04:47,946 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 22.000000 seconds
+2026-04-20 13:04:47,946 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 22.000000 seconds
+2026-04-20 13:05:11,211 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 13:05:11,211 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 13:05:11,248 | INFO    | modules.message_handler | Message from Chandrima classified as: work_update (reply: False)
+2026-04-20 13:05:11,248 | INFO    | modules.message_handler | Message from Chandrima classified as: work_update (reply: False)
+2026-04-20 13:05:11,248 | INFO    | modules.message_handler | No reply needed for message from Chandrima: work_update
+2026-04-20 13:05:11,248 | INFO    | modules.message_handler | No reply needed for message from Chandrima: work_update
+2026-04-20 13:05:11,360 | INFO    | mentor_system        | Startup catch-up: replied to Chandrima Adhikary (msg_id=1190)
+2026-04-20 13:05:11,360 | INFO    | mentor_system        | Startup catch-up: replied to Chandrima Adhikary (msg_id=1190)
+2026-04-20 13:05:26,377 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:05:26,377 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:05:26,378 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 13:05:26,378 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 13:05:41,544 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:05:41,544 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:05:41,545 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 13:05:41,545 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 13:06:11,676 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:06:11,676 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:06:11,677 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 13:06:11,677 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 13:07:12,124 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:07:12,124 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:07:12,125 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 13:07:12,125 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 13:09:12,323 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:09:12,323 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:09:12,324 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)
+2026-04-20 13:09:12,324 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)
+2026-04-20 13:13:12,327 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 13:13:12,327 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 13:13:12,327 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 13:13:12,327 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 13:13:28,091 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:13:28,091 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:13:28,093 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 13:13:28,093 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 13:13:43,568 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:13:43,568 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:13:43,569 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 13:13:43,569 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 13:14:13,784 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:14:13,784 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:14:13,786 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 13:14:13,786 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 13:15:13,944 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:15:13,944 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:15:13,946 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 13:15:13,946 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 13:15:26,904 | WARNING | telethon.network.connection.connection | Server closed the connection: [Errno 54] Connection reset by peer
+2026-04-20 13:15:26,904 | WARNING | telethon.network.connection.connection | Server closed the connection: [Errno 54] Connection reset by peer
+2026-04-20 13:17:14,087 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:17:14,087 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 13:17:14,089 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)
+2026-04-20 13:17:14,089 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)

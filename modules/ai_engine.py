@@ -7,8 +7,8 @@ Rate limit strategy:
 - Token cost per call: classify ~350 tokens, generate ~950 tokens
 - Full reply (classify + generate) = ~1300 tokens
 - 6000 tokens/min ÷ 1300 = 4.6 students/min → 13s minimum interval
-- _MIN_INTERVAL set to 15s for safety buffer
-- 40 students × 15s = ~10 minutes max queue drain (well within 1 hour SLA)
+- _MIN_INTERVAL set to 20s for a safer buffer under real prompts/history
+- 40 students × 20s = ~13 minutes max queue drain (well within 1 hour SLA)
 """
 
 from __future__ import annotations
@@ -29,32 +29,43 @@ log = logging.getLogger(__name__)
 # ─────────────────────────────────────────────────────────────
 # CLIENT INIT
 # ─────────────────────────────────────────────────────────────
-_client = AsyncGroq(api_key=GROQ_API_KEY)
+_client = AsyncGroq(api_key=GROQ_API_KEY, max_retries=0)
 
 # ─────────────────────────────────────────────────────────────
 # GLOBAL THROTTLE
-# 15s between calls = 4/min = safe under 6000 tokens/min limit
-# All 40 students processed in ~10 minutes, well within 1 hour SLA
+# 20s between calls = 3/min = safer under 6000 tokens/min with long prompts
+# All 40 students processed in ~13 minutes, well within 1 hour SLA
 # ─────────────────────────────────────────────────────────────
 # Use Optional[asyncio.Lock] for Python 3.9 compatibility (not asyncio.Lock | None)
 _throttle_lock: Optional[asyncio.Lock] = None
-_last_call_time: float = 0.0
-_MIN_INTERVAL: float = 15.0  # seconds between API calls
+_throttle_loop: Optional[asyncio.AbstractEventLoop] = None
+_next_allowed_time: float = 0.0
+_MIN_INTERVAL: float = 20.0  # seconds between API calls
+_MAX_BACKOFF: float = 300.0
 
 
 def _get_throttle_lock() -> asyncio.Lock:
     """Get or create the throttle lock in the current event loop."""
-    global _throttle_lock
-    # Always create a fresh lock if None OR if the existing lock is bound to a dead loop
-    try:
-        if _throttle_lock is None:
-            _throttle_lock = asyncio.Lock()
-        # Test that the lock is usable in the current loop
-        loop = asyncio.get_event_loop()
-        return _throttle_lock
-    except RuntimeError:
+    global _throttle_lock, _throttle_loop
+    loop = asyncio.get_running_loop()
+    if _throttle_lock is None or _throttle_loop is not loop:
         _throttle_lock = asyncio.Lock()
-        return _throttle_lock
+        _throttle_loop = loop
+    return _throttle_lock
+
+
+def _is_rate_limit_error(exc: Exception) -> bool:
+    """Detect Groq/httpx 429 errors without depending on SDK internals."""
+    status_code = getattr(exc, "status_code", None)
+    if status_code == 429:
+        return True
+
+    response = getattr(exc, "response", None)
+    if response is not None and getattr(response, "status_code", None) == 429:
+        return True
+
+    error_str = str(exc).lower()
+    return "429" in error_str or "rate_limit" in error_str or "too many requests" in error_str
 
 
 async def _throttled_call(func, max_retries: int = 5):
@@ -63,49 +74,33 @@ async def _throttled_call(func, max_retries: int = 5):
     then retry with exponential backoff on rate limit errors.
     Prevents burst firing during scheduled check-ins with 40 students.
     """
-    global _last_call_time, _throttle_lock
+    global _next_allowed_time
 
-    # Always reinitialize lock in the current running loop to avoid
-    # "Future attached to a different loop" errors on restart
-    try:
-        running_loop = asyncio.get_running_loop()
-    except RuntimeError:
-        running_loop = None
-
-    if _throttle_lock is None:
-        _throttle_lock = asyncio.Lock()
-    else:
-        # Check if lock belongs to a different loop (Python 3.9 workaround)
-        try:
-            # Try a non-blocking acquire — if it raises RuntimeError, recreate
-            if hasattr(_throttle_lock, '_loop') and _throttle_lock._loop is not running_loop:
-                _throttle_lock = asyncio.Lock()
-        except Exception:
-            _throttle_lock = asyncio.Lock()
-
-    async with _throttle_lock:
-        # Enforce minimum gap between calls
-        now = time.monotonic()
-        gap = _MIN_INTERVAL - (now - _last_call_time)
-        if gap > 0:
-            await asyncio.sleep(gap)
-
+    async with _get_throttle_lock():
         for attempt in range(max_retries):
+            now = time.monotonic()
+            gap = _next_allowed_time - now
+            if gap > 0:
+                log.info(f"Groq cooldown active, waiting {gap:.1f}s before next API call")
+                await asyncio.sleep(gap)
+
             try:
                 result = await func()
-                _last_call_time = time.monotonic()
+                next_time = time.monotonic() + _MIN_INTERVAL
+                _next_allowed_time = max(_next_allowed_time, next_time)
+                log.info(f"Groq call succeeded; next call allowed in {_MIN_INTERVAL:.0f}s")
                 return result
             except Exception as e:
-                error_str = str(e)
-                if "429" in error_str or "rate_limit" in error_str.lower():
-                    # Exponential backoff: 15s, 30s, 60s, 120s, 240s
-                    wait = _MIN_INTERVAL * (2 ** attempt)
+                if _is_rate_limit_error(e):
+                    # Exponential backoff: 20s, 40s, 80s, 160s, 300s
+                    wait = min(_MIN_INTERVAL * (2 ** attempt), _MAX_BACKOFF)
                     log.warning(
                         f"Groq rate limit hit, waiting {wait:.0f}s "
                         f"(attempt {attempt + 1}/{max_retries})"
                     )
-                    await asyncio.sleep(wait)
-                    _last_call_time = time.monotonic()
+                    _next_allowed_time = max(_next_allowed_time, time.monotonic() + wait)
+                    if attempt == max_retries - 1:
+                        break
                 else:
                     log.error(f"Groq API error (non-rate-limit): {e}")
                     raise

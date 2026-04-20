@@ -12,7 +12,7 @@ while true; do
     START_TIME=$(date +%s)
     echo "[$(date)] Starting Mentor System (crash count: $CRASH_COUNT)..."
 
-    /usr/bin/python3 mentor_system.py >> data/mentor.log 2>&1
+    /usr/bin/python3 mentor_system.py >> data/mentor_stdout.log 2>> data/mentor_stderr.log
     EXIT_CODE=$?
 
     END_TIME=$(date +%s)
