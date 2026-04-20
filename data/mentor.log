@@ -2902,3 +2902,1408 @@ ModuleNotFoundError: No module named 'aiosqlite'
 2026-04-20 12:35:57,636 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
 2026-04-20 12:35:57,636 | ERROR   | modules.ai_engine    | generate_message: failed after retries
 2026-04-20 12:35:57,636 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 17, in <module>
+    import aiosqlite
+ModuleNotFoundError: No module named 'aiosqlite'
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:36:55,074 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:36:55,074 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:36:56,262 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:36:56,262 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:36:56,263 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:36:56,263 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:36:56,381 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:36:56,381 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:36:56,555 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:36:56,555 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:36:56,563 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-11' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:56,563 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-11' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:56,563 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 12:36:56,563 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 12:36:56,567 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-11' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-11' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:56,567 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-11' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-11' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:56,933 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:36:56,933 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:36:56,940 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-12' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:56,940 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-12' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:56,940 | INFO    | modules.message_handler | Message from Aayushi classified as: unknown (reply: True)
+2026-04-20 12:36:56,940 | INFO    | modules.message_handler | Message from Aayushi classified as: unknown (reply: True)
+2026-04-20 12:36:56,943 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-12' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-12' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-12' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:56,943 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-12' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-12' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-12' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,087 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:36:58,087 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:36:58,095 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-13' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,095 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-13' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,096 | INFO    | modules.message_handler | Message from Sundaram classified as: unknown (reply: True)
+2026-04-20 12:36:58,096 | INFO    | modules.message_handler | Message from Sundaram classified as: unknown (reply: True)
+2026-04-20 12:36:58,100 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-13' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-13' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,100 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-13' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-13' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,289 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:36:58,289 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:36:58,296 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-14' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,296 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-14' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,296 | INFO    | modules.message_handler | Message from Piyush classified as: unknown (reply: True)
+2026-04-20 12:36:58,296 | INFO    | modules.message_handler | Message from Piyush classified as: unknown (reply: True)
+2026-04-20 12:36:58,299 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-14' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-14' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,299 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-14' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-14' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,606 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:36:58,606 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:36:58,960 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Task <Task pending name='Task-15' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:77>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,960 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Task <Task pending name='Task-15' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:77>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,960 | INFO    | modules.message_handler | Photo from Aditya: type=unknown, value=
+2026-04-20 12:36:58,960 | INFO    | modules.message_handler | Photo from Aditya: type=unknown, value=
+2026-04-20 12:36:58,965 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:36:58,965 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:36:58,970 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-16' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,970 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-16' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,971 | INFO    | modules.message_handler | Message from Bhavin classified as: unknown (reply: True)
+2026-04-20 12:36:58,971 | INFO    | modules.message_handler | Message from Bhavin classified as: unknown (reply: True)
+2026-04-20 12:36:58,974 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-16' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-16' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:58,974 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-16' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-16' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,332 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:36:59,332 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:36:59,342 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-18' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,342 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-18' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,342 | INFO    | modules.message_handler | Message from Pruthviraj classified as: unknown (reply: True)
+2026-04-20 12:36:59,342 | INFO    | modules.message_handler | Message from Pruthviraj classified as: unknown (reply: True)
+2026-04-20 12:36:59,346 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-18' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-18' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-18' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,346 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-18' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-18' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-18' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,459 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:36:59,459 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:36:59,466 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-19' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,466 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-19' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,466 | INFO    | modules.message_handler | Message from Shreya classified as: unknown (reply: True)
+2026-04-20 12:36:59,466 | INFO    | modules.message_handler | Message from Shreya classified as: unknown (reply: True)
+2026-04-20 12:36:59,469 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-19' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-19' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,469 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-19' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-19' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:36:59,995 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:36:59,995 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:37:00,003 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-20' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,003 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-20' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,003 | INFO    | modules.message_handler | Message from Tareen classified as: unknown (reply: True)
+2026-04-20 12:37:00,003 | INFO    | modules.message_handler | Message from Tareen classified as: unknown (reply: True)
+2026-04-20 12:37:00,008 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-20' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-20' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,008 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-20' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-20' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,277 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:37:00,277 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:37:00,572 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Task <Task pending name='Task-21' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:77>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,572 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Task <Task pending name='Task-21' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:77>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,572 | INFO    | modules.message_handler | Photo from Divyansh: type=unknown, value=
+2026-04-20 12:37:00,572 | INFO    | modules.message_handler | Photo from Divyansh: type=unknown, value=
+2026-04-20 12:37:00,706 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:37:00,706 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:37:00,720 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-23' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,720 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-23' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,720 | INFO    | modules.message_handler | Message from Rohit classified as: unknown (reply: True)
+2026-04-20 12:37:00,720 | INFO    | modules.message_handler | Message from Rohit classified as: unknown (reply: True)
+2026-04-20 12:37:00,723 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-23' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-23' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-23' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,723 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-23' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-23' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-23' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,819 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:37:00,819 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:37:00,826 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-24' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,826 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-24' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,826 | INFO    | modules.message_handler | Message from Vikas classified as: unknown (reply: True)
+2026-04-20 12:37:00,826 | INFO    | modules.message_handler | Message from Vikas classified as: unknown (reply: True)
+2026-04-20 12:37:00,829 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-24' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-24' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-24' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:00,829 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-24' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-24' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-24' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:01,039 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:37:01,039 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:37:01,755 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Task <Task pending name='Task-25' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:77>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:01,755 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Task <Task pending name='Task-25' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:77>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:01,755 | INFO    | modules.message_handler | Photo from Vishal: type=unknown, value=
+2026-04-20 12:37:01,755 | INFO    | modules.message_handler | Photo from Vishal: type=unknown, value=
+2026-04-20 12:37:01,882 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:37:01,882 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:37:01,889 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-29' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:01,889 | ERROR   | modules.ai_engine    | classify_message parse error: Task <Task pending name='Task-29' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:86>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:01,890 | INFO    | modules.message_handler | Message from Aarzoo classified as: unknown (reply: True)
+2026-04-20 12:37:01,890 | INFO    | modules.message_handler | Message from Aarzoo classified as: unknown (reply: True)
+2026-04-20 12:37:01,894 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-29' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-29' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-29' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:01,894 | ERROR   | asyncio              | Task exception was never retrieved
+future: <Task finished name='Task-29' coro=<handle_student_message() done, defined at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:23> exception=RuntimeError("Task <Task pending name='Task-29' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop")>
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 211, in handle_student_message
+    reply = await ai_engine.generate_message(prompt)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 101, in generate_message
+    result = await _throttled_call(_call)
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 50, in _throttled_call
+    async with _throttle_lock:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 14, in __aenter__
+    await self.acquire()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/locks.py", line 120, in acquire
+    await fut
+RuntimeError: Task <Task pending name='Task-29' coro=<handle_student_message() running at /Users/ujjwalkalra14/MentorBot/modules/message_handler.py:211>> got Future <Future pending> attached to a different loop
+2026-04-20 12:37:02,912 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:37:02,912 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:37:02,915 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:37:02,915 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:37:03,036 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:37:03,036 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:37:09,797 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:37:09,797 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:37:09,798 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:37:09,798 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:37:24,891 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:37:24,891 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:37:24,893 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:37:24,893 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:37:55,015 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:37:55,015 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:37:55,016 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:37:55,016 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 17, in <module>
+    import aiosqlite
+ModuleNotFoundError: No module named 'aiosqlite'
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:38:21,157 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:38:21,157 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:38:23,387 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:38:23,387 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:38:23,388 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:38:23,388 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:38:23,664 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:38:23,664 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:38:23,815 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:23,815 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:23,816 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:23,816 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:23,958 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:38:23,958 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:38:24,062 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:24,062 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:24,064 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:24,064 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:24,253 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:38:24,253 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:38:24,304 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:24,304 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:24,305 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:24,305 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:27,235 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:38:27,235 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:38:27,288 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:27,288 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:27,290 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:27,290 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:27,795 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:38:27,795 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:38:27,846 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:27,846 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:27,848 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:27,848 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:28,671 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:38:28,671 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:38:28,863 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:28,863 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:28,864 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:28,864 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:29,111 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:29,111 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:29,113 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:29,113 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:29,354 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:29,354 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:29,356 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:29,356 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:29,611 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:38:29,611 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:38:29,730 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:29,730 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:29,732 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:29,732 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:29,972 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:38:29,972 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:38:29,999 | INFO    | modules.message_handler | Photo from Aditya: type=gt, value=35.0%
+2026-04-20 12:38:29,999 | INFO    | modules.message_handler | Photo from Aditya: type=gt, value=35.0%
+2026-04-20 12:38:30,628 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:38:30,628 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:38:30,677 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:30,677 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:30,679 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:30,679 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:30,906 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:38:30,906 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:38:30,962 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:30,962 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:30,964 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:30,964 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:32,085 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:38:32,085 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:38:32,135 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:32,135 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:32,137 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:32,137 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:32,338 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:32,338 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:32,340 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:32,340 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:32,811 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:38:32,811 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:38:32,975 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:32,975 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:32,977 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:32,977 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:34,089 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:38:34,089 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:38:34,158 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,158 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,160 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:34,160 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:34,226 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:38:34,226 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:38:34,229 | INFO    | modules.message_handler | Photo from Divyansh: type=mynb, value=100.0%
+2026-04-20 12:38:34,229 | INFO    | modules.message_handler | Photo from Divyansh: type=mynb, value=100.0%
+2026-04-20 12:38:34,277 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,277 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,279 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:34,279 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:34,391 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:38:34,391 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:38:34,446 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,446 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,448 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:34,448 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:34,778 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,778 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:34,779 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:34,779 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:34,943 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:38:34,943 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:38:35,722 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:38:35,722 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:38:35,724 | INFO    | modules.message_handler | Photo from Vishal: type=quiz, value=51.4%
+2026-04-20 12:38:35,724 | INFO    | modules.message_handler | Photo from Vishal: type=quiz, value=51.4%
+2026-04-20 12:38:35,731 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:35,731 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:35,733 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:35,733 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:35,869 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:38:35,869 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:38:35,921 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:35,921 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:35,923 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:35,923 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:36,015 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:36,015 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:36,016 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:36,016 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:36,968 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:38:36,968 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:38:36,970 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:38:36,970 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:38:37,212 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:37,212 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:37,214 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:37,214 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:37,245 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:38:37,245 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:38:38,930 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:38,930 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:38,932 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:38,932 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:39,160 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,160 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,161 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:39,161 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:39,298 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,298 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,300 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:39,300 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:39,337 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,337 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,339 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:39,339 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:39,400 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,400 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,401 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:39,401 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:39,497 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,497 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:39,499 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:39,499 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:41,755 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:41,755 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:41,757 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:41,757 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:38:42,451 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:42,451 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:42,453 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:42,453 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:43,025 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:43,025 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:43,027 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:43,027 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:44,832 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:44,832 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:44,833 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:44,833 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:45,790 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:45,790 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:45,791 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:45,791 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:46,122 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:46,122 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:46,124 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:46,124 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:47,263 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:47,263 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:47,266 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:47,266 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:49,390 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:49,390 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:49,392 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:49,392 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:49,436 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:49,436 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:49,438 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:49,438 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:49,547 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:49,547 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:49,549 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:49,549 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:51,886 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:51,886 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:51,888 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:51,888 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:38:58,934 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:38:58,934 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:38:58,934 | INFO    | modules.message_handler | Message from Chandrima classified as: unknown (reply: True)
+2026-04-20 12:38:58,934 | INFO    | modules.message_handler | Message from Chandrima classified as: unknown (reply: True)
+2026-04-20 12:38:59,028 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:59,028 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:59,029 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:59,029 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:59,163 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:38:59,163 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:38:59,163 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 12:38:59,163 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 12:38:59,230 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:59,230 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:59,231 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:59,231 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:59,403 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:38:59,403 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:38:59,403 | INFO    | modules.message_handler | Message from Aayushi classified as: unknown (reply: True)
+2026-04-20 12:38:59,403 | INFO    | modules.message_handler | Message from Aayushi classified as: unknown (reply: True)
+2026-04-20 12:38:59,455 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:59,455 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:38:59,457 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:38:59,457 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:02,455 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:02,455 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:02,455 | INFO    | modules.message_handler | Message from Sundaram classified as: unknown (reply: True)
+2026-04-20 12:39:02,455 | INFO    | modules.message_handler | Message from Sundaram classified as: unknown (reply: True)
+2026-04-20 12:39:02,507 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:02,507 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:02,508 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:02,508 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:03,028 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:03,028 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:03,028 | INFO    | modules.message_handler | Message from Piyush classified as: unknown (reply: True)
+2026-04-20 12:39:03,028 | INFO    | modules.message_handler | Message from Piyush classified as: unknown (reply: True)
+2026-04-20 12:39:03,080 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:03,080 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:03,082 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:03,082 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:04,079 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,079 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,081 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:04,081 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:04,280 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,280 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,281 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:04,281 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:04,506 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,506 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,508 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:04,508 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:04,835 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:04,835 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:04,836 | INFO    | modules.message_handler | Message from Bhavin classified as: unknown (reply: True)
+2026-04-20 12:39:04,836 | INFO    | modules.message_handler | Message from Bhavin classified as: unknown (reply: True)
+2026-04-20 12:39:04,956 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,956 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:04,958 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:04,958 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:05,792 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:05,792 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:05,793 | INFO    | modules.message_handler | Message from Pruthviraj classified as: unknown (reply: True)
+2026-04-20 12:39:05,793 | INFO    | modules.message_handler | Message from Pruthviraj classified as: unknown (reply: True)
+2026-04-20 12:39:05,856 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:05,856 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:05,858 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:05,858 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:06,126 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:06,126 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:06,126 | INFO    | modules.message_handler | Message from Shreya classified as: unknown (reply: True)
+2026-04-20 12:39:06,126 | INFO    | modules.message_handler | Message from Shreya classified as: unknown (reply: True)
+2026-04-20 12:39:06,183 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:06,183 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:06,185 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:06,185 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:07,267 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:07,267 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:07,268 | INFO    | modules.message_handler | Message from Tareen classified as: unknown (reply: True)
+2026-04-20 12:39:07,268 | INFO    | modules.message_handler | Message from Tareen classified as: unknown (reply: True)
+2026-04-20 12:39:07,329 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:07,329 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:07,330 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:07,330 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:07,616 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:07,616 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:07,618 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:07,618 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:08,147 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:08,147 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:08,147 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:08,147 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:09,393 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:09,393 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:09,394 | INFO    | modules.message_handler | Message from Rohit classified as: unknown (reply: True)
+2026-04-20 12:39:09,394 | INFO    | modules.message_handler | Message from Rohit classified as: unknown (reply: True)
+2026-04-20 12:39:09,439 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:09,439 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:09,439 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:09,439 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:09,466 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:09,466 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:09,468 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:09,468 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:09,550 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:09,550 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:09,551 | INFO    | modules.message_handler | Message from Vikas classified as: unknown (reply: True)
+2026-04-20 12:39:09,551 | INFO    | modules.message_handler | Message from Vikas classified as: unknown (reply: True)
+2026-04-20 12:39:09,675 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:09,675 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:09,676 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:09,676 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:10,009 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:10,009 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:10,010 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:10,010 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:10,950 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:10,950 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:10,952 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:10,952 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:11,287 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:11,287 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:11,288 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:11,288 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:11,888 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:11,888 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:11,889 | INFO    | modules.message_handler | Message from Aarzoo classified as: unknown (reply: True)
+2026-04-20 12:39:11,889 | INFO    | modules.message_handler | Message from Aarzoo classified as: unknown (reply: True)
+2026-04-20 12:39:11,941 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:11,941 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:11,943 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:11,943 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 5s (attempt 1/3)
+2026-04-20 12:39:12,400 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:12,400 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:12,402 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:12,402 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:14,132 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,132 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,134 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:14,134 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:14,395 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,395 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,396 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:14,396 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:14,517 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,517 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,518 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:14,518 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:14,602 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,602 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,604 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:14,604 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:14,731 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,731 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:14,733 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:14,733 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 17, in <module>
+    import aiosqlite
+ModuleNotFoundError: No module named 'aiosqlite'
+2026-04-20 12:39:17,057 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:17,057 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:17,059 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:17,059 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 10s (attempt 2/3)
+2026-04-20 12:39:17,665 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:17,665 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:17,667 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:17,667 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:18,199 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:18,199 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:18,201 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:18,201 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:20,067 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:20,067 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:20,068 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:20,068 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:21,003 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:21,003 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:21,005 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:21,005 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:21,343 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:21,343 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:21,345 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:21,345 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:22,573 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:22,573 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:22,574 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:22,574 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:24,569 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:24,569 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:24,570 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:24,570 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:24,929 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:24,929 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:24,930 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:24,930 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:27,110 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:27,110 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:39:27,112 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:27,112 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 20s (attempt 3/3)
+2026-04-20 12:39:34,135 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:34,135 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:34,135 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:34,135 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:34,397 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:34,397 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:34,397 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:34,397 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:34,606 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:34,606 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:34,606 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:34,606 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:37,668 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:37,668 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:37,668 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:37,668 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:38,203 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:38,203 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:38,203 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:38,203 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:40,070 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:40,070 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:40,070 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:40,070 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:41,006 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:41,006 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:41,007 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:41,007 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:41,346 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:41,346 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:41,346 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:41,346 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:42,576 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:42,576 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:42,576 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:42,576 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:44,571 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:44,571 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:44,572 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:44,572 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:44,932 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:44,932 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:44,932 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:44,932 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:47,113 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:47,113 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:39:47,114 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+2026-04-20 12:39:47,114 | ERROR   | modules.ai_engine    | generate_message: failed after retries
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 17, in <module>
+    import aiosqlite
+ModuleNotFoundError: No module named 'aiosqlite'
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 121
+    prompt = f\"\"\"Analyze this message from a medical student in a Telegram group chat.
+                                                                                        ^
+SyntaxError: unexpected character after line continuation character
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 121
+    prompt = f\"\"\"Analyze this message from a medical student in a Telegram group chat.
+                                                                                        ^
+SyntaxError: unexpected character after line continuation character
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 121
+    prompt = f\"\"\"Analyze this message from a medical student in a Telegram group chat.
+                                                                                        ^
+SyntaxError: unexpected character after line continuation character
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 36, in <module>
+    _throttle_lock: asyncio.Lock | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 36, in <module>
+    _throttle_lock: asyncio.Lock | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 36, in <module>
+    _throttle_lock: asyncio.Lock | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 36, in <module>
+    _throttle_lock: asyncio.Lock | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 36, in <module>
+    _throttle_lock: asyncio.Lock | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 32, in <module>
+    from modules import message_handler
+  File "/Users/ujjwalkalra14/MentorBot/modules/message_handler.py", line 17, in <module>
+    from modules import ai_engine
+  File "/Users/ujjwalkalra14/MentorBot/modules/ai_engine.py", line 36, in <module>
+    _throttle_lock: asyncio.Lock | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:42:27,000 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:42:27,000 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:42:30,106 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:42:30,106 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:42:30,106 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:42:30,106 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:42:30,388 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:42:30,388 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:42:30,774 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:42:30,774 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:42:31,057 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:42:31,057 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:42:34,557 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:42:34,557 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:42:35,299 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:42:35,299 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:42:36,145 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:42:36,145 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:42:36,423 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:42:36,423 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:42:37,631 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:42:37,631 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:42:37,930 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:42:37,930 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:42:39,189 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:42:39,189 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:42:39,752 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:42:39,752 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:42:42,113 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:42:42,113 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:42:42,550 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:42:42,550 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:42:42,572 | INFO    | modules.message_handler | Message from Chandrima classified as: work_update (reply: False)
+2026-04-20 12:42:42,572 | INFO    | modules.message_handler | Message from Chandrima classified as: work_update (reply: False)
+2026-04-20 12:42:42,572 | INFO    | modules.message_handler | No reply needed for message from Chandrima: work_update
+2026-04-20 12:42:42,572 | INFO    | modules.message_handler | No reply needed for message from Chandrima: work_update
+2026-04-20 12:42:42,576 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:42:42,576 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:42:44,387 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:42:44,387 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:42:45,216 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:42:45,216 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:42:46,489 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:42:46,489 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:42:46,491 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:42:46,491 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:42:46,835 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:42:46,835 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:42:57,744 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:42:57,744 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:42:57,745 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:42:57,745 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:43:02,859 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:02,859 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:02,859 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:02,859 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:04,356 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:43:04,356 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:43:04,356 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:43:04,356 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:43:04,585 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:43:04,585 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:43:04,744 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:43:04,744 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:43:04,933 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:43:04,933 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:43:06,664 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:43:06,664 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:43:06,985 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:43:06,985 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:43:07,906 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:43:07,906 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:43:08,063 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:43:08,063 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:43:08,758 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:43:08,758 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:43:08,911 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:43:08,911 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:43:09,620 | INFO    | mentor_system        | Startup catch-up: found missed message from Rajnish Pandey, queuing reply.
+2026-04-20 12:43:09,620 | INFO    | mentor_system        | Startup catch-up: found missed message from Rajnish Pandey, queuing reply.
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 242, in <module>
+    asyncio.run(main())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 105, in main
+    await client.start()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/auth.py", line 135, in _start
+    await self.connect()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/telegrambaseclient.py", line 614, in connect
+    me = await self.get_me()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/users.py", line 170, in get_me
+    me = (await self(
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/users.py", line 93, in _call
+    await utils.maybe_async(self.session.process_entities(result))
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 318, in process_entities
+    c.executemany(
+sqlite3.OperationalError: database is locked
+2026-04-20 12:43:11,546 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:43:11,546 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:43:11,905 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:43:11,905 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:43:13,217 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:13,217 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:14,002 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:43:14,002 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:43:14,156 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:43:14,156 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:43:14,924 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:43:14,924 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:43:15,574 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:43:15,574 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:43:16,251 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:43:16,251 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:43:16,252 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:43:16,252 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:43:16,412 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:43:16,412 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:43:17,431 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:43:17,431 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:43:17,431 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:43:17,431 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 242, in <module>
+    asyncio.run(main())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 105, in main
+    await client.start()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/auth.py", line 135, in _start
+    await self.connect()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+    self.session.auth_key = self._sender.auth_key
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+    self._update_session_table()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+    c.execute('delete from sessions')
+sqlite3.OperationalError: database is locked
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:43:23,579 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:23,579 | INFO    | modules.student_tracker | Database initialized
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 242, in <module>
+    asyncio.run(main())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 105, in main
+    await client.start()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/auth.py", line 135, in _start
+    await self.connect()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+    self.session.auth_key = self._sender.auth_key
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+    self._update_session_table()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+    c.execute('delete from sessions')
+sqlite3.OperationalError: database is locked
+2026-04-20 12:43:32,561 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:43:32,561 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:43:32,562 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:43:32,562 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:43:34,480 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:34,480 | INFO    | modules.student_tracker | Database initialized
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 242, in <module>
+    asyncio.run(main())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 105, in main
+    await client.start()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/auth.py", line 135, in _start
+    await self.connect()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+    self.session.auth_key = self._sender.auth_key
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+    self._update_session_table()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+    c.execute('delete from sessions')
+sqlite3.OperationalError: database is locked
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:43:44,706 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:44,706 | INFO    | modules.student_tracker | Database initialized
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 242, in <module>
+    asyncio.run(main())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 105, in main
+    await client.start()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/auth.py", line 135, in _start
+    await self.connect()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+    self.session.auth_key = self._sender.auth_key
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+    self._update_session_table()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+    c.execute('delete from sessions')
+sqlite3.OperationalError: database is locked
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:43:54,990 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:43:54,990 | INFO    | modules.student_tracker | Database initialized
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 242, in <module>
+    asyncio.run(main())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 105, in main
+    await client.start()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/auth.py", line 135, in _start
+    await self.connect()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+    self.session.auth_key = self._sender.auth_key
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+    self._update_session_table()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+    c.execute('delete from sessions')
+sqlite3.OperationalError: database is locked
+2026-04-20 12:44:02,663 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:44:02,663 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:44:02,665 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:44:02,665 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:44:05,416 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:44:05,416 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:44:09,330 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:44:09,330 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:44:09,331 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:44:09,331 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:44:09,625 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:44:09,625 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:44:09,918 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:44:09,918 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:44:10,194 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:44:10,194 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:44:12,605 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:44:12,605 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:44:13,254 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:44:13,254 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:44:14,138 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:44:14,138 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:44:14,413 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:44:14,413 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:44:16,248 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:44:16,248 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:44:16,571 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:44:16,571 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:44:17,820 | INFO    | mentor_system        | Startup catch-up: found missed message from Rajnish Pandey, queuing reply.
+2026-04-20 12:44:17,820 | INFO    | mentor_system        | Startup catch-up: found missed message from Rajnish Pandey, queuing reply.
+2026-04-20 12:44:20,153 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:44:20,153 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:44:20,319 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:44:20,319 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:44:20,320 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:44:20,320 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:44:20,692 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:44:20,692 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:44:22,157 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:44:22,157 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:44:22,436 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:44:22,436 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:44:23,075 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:44:23,075 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:44:24,147 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:44:24,147 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:44:25,878 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:44:25,878 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:44:25,880 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:44:25,880 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:44:26,161 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:44:26,161 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:44:35,447 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:44:35,447 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:44:35,448 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:44:35,448 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:44:57,062 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:44:57,062 | INFO    | modules.student_tracker | Database initialized
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 12:44:58,748 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:44:58,748 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 12:44:59,287 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:44:59,287 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 12:44:59,288 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:44:59,288 | INFO    | mentor_system        | Running startup catch-up check for all students...
+2026-04-20 12:44:59,669 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:44:59,669 | INFO    | mentor_system        | Startup catch-up: found missed message from Chandrima Adhikary, queuing reply.
+2026-04-20 12:44:59,970 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:44:59,970 | INFO    | mentor_system        | Startup catch-up: found missed message from Noel Mondal, queuing reply.
+2026-04-20 12:45:00,270 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:45:00,270 | INFO    | mentor_system        | Startup catch-up: found missed message from Aayushi Verma, queuing reply.
+2026-04-20 12:45:02,723 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:45:02,723 | INFO    | mentor_system        | Startup catch-up: found missed message from Sundaram Chaudhary, queuing reply.
+2026-04-20 12:45:03,352 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+2026-04-20 12:45:03,352 | INFO    | mentor_system        | Startup catch-up: found missed message from Piyush Arora, queuing reply.
+Traceback (most recent call last):
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 242, in <module>
+    asyncio.run(main())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/ujjwalkalra14/MentorBot/mentor_system.py", line 105, in main
+    await client.start()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/auth.py", line 135, in _start
+    await self.connect()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+    self.session.auth_key = self._sender.auth_key
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+    self._update_session_table()
+  File "/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+    c.execute('delete from sessions')
+sqlite3.OperationalError: database is locked
+2026-04-20 12:45:04,271 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:45:04,271 | INFO    | mentor_system        | Startup catch-up: found missed message from Aditya Butle, queuing reply.
+2026-04-20 12:45:05,676 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:45:05,676 | INFO    | mentor_system        | Startup catch-up: found missed message from Bhavin, queuing reply.
+2026-04-20 12:45:06,783 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:45:06,783 | INFO    | mentor_system        | Startup catch-up: found missed message from Pruthviraj Parmar, queuing reply.
+2026-04-20 12:45:07,087 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:45:07,087 | INFO    | mentor_system        | Startup catch-up: found missed message from Shreya Kashish, queuing reply.
+2026-04-20 12:45:07,661 | INFO    | mentor_system        | Startup catch-up: found missed message from Rajnish Pandey, queuing reply.
+2026-04-20 12:45:07,661 | INFO    | mentor_system        | Startup catch-up: found missed message from Rajnish Pandey, queuing reply.
+2026-04-20 12:45:09,206 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:45:09,206 | INFO    | mentor_system        | Startup catch-up: found missed message from Tareen G Khan, queuing reply.
+2026-04-20 12:45:09,870 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:45:09,870 | INFO    | mentor_system        | Startup catch-up: found missed message from Divyansh Thakur, queuing reply.
+2026-04-20 12:45:10,730 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:45:10,730 | INFO    | mentor_system        | Startup catch-up: found missed message from Rohit N Nikhade, queuing reply.
+2026-04-20 12:45:11,028 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:45:11,028 | INFO    | mentor_system        | Startup catch-up: found missed message from Vikas Detwani, queuing reply.
+2026-04-20 12:45:11,685 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:45:11,685 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:45:11,686 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:45:11,686 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:45:11,755 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:45:11,755 | INFO    | mentor_system        | Startup catch-up: found missed message from Vishal Bandi, queuing reply.
+2026-04-20 12:45:12,639 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:45:12,639 | INFO    | mentor_system        | Startup catch-up: found missed message from Aarzoo Rawat, queuing reply.
+2026-04-20 12:45:14,412 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:45:14,412 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 12:45:14,414 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:45:14,414 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 12:45:14,705 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:45:14,705 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 12:45:26,774 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:45:26,774 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:45:26,775 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:45:26,775 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:45:57,230 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:45:57,230 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:45:57,232 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:45:57,232 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:46:57,425 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:46:57,425 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:46:57,427 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 12:46:57,427 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)

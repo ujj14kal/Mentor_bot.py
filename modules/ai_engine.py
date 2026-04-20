@@ -17,6 +17,7 @@ import base64
 import logging
 import asyncio
 import time
+from typing import Optional
 from groq import AsyncGroq
 
 from config import GROQ_API_KEY, GROQ_TEXT_MODEL, GROQ_VISION_MODEL, SHRADDHA_PERSONA
@@ -28,13 +29,12 @@ log = logging.getLogger(__name__)
 # ─────────────────────────────────────────────────────────────
 _client = AsyncGroq(api_key=GROQ_API_KEY)
 
-
 # ─────────────────────────────────────────────────────────────
 # GLOBAL THROTTLE
 # 15s between calls = 4/min = safe under 6000 tokens/min limit
 # All 40 students processed in ~10 minutes, well within 1 hour SLA
 # ─────────────────────────────────────────────────────────────
-_throttle_lock = asyncio.Lock()
+_throttle_lock: Optional[asyncio.Lock] = None
 _last_call_time: float = 0.0
 _MIN_INTERVAL: float = 15.0  # seconds between API calls
 
@@ -45,7 +45,10 @@ async def _throttled_call(func, max_retries: int = 5):
     then retry with exponential backoff on rate limit errors.
     Prevents burst firing during scheduled check-ins with 40 students.
     """
-    global _last_call_time
+    global _last_call_time, _throttle_lock
+
+    if _throttle_lock is None:
+        _throttle_lock = asyncio.Lock()
 
     async with _throttle_lock:
         # Enforce minimum gap between calls
@@ -116,7 +119,7 @@ async def classify_message(text: str) -> dict:
     Returns: {"type": str, "needs_reply": bool, "is_planner": bool,
               "is_subject_change": bool, "summary": str}
     """
-    prompt = f"""Analyze this message from a medical student in a Telegram group chat.
+    prompt = f'''Analyze this message from a medical student in a Telegram group chat.
 The student is preparing for NEET PG and sends updates about their study work.
 
 Message: "{text}"
@@ -142,7 +145,7 @@ Rules:
 "is_planner" Rule:
 Only set "is_planner": true if the student is asking the mentor to CHANGE their official schedule/dates.
 If they are just sharing their plan for the day, set "is_planner": false.
-"""
+'''
 
     async def _call():
         resp = await _client.chat.completions.create(
@@ -177,7 +180,7 @@ async def classify_ops_message(text: str) -> dict:
               "target_students": list, "is_quiz_link": bool,
               "is_gt_message": bool, "summary": str}
     """
-    prompt = f"""Analyze this message from the Eyeconic OPS Tele group (admin/support group).
+    prompt = f'''Analyze this message from the Eyeconic OPS Tele group (admin/support group).
 This group is used by admins to send announcements, quiz links, GT links, and operational updates.
 
 Message: "{text}"
@@ -202,7 +205,7 @@ Rules:
 - for_all_students: true if this should be shared with every student
 - target_students: list of student names if message is for specific students only
 - needs_forwarding: true if this message content should be sent to student chats
-"""
+'''
 
     async def _call():
         resp = await _client.chat.completions.create(
@@ -241,7 +244,7 @@ async def extract_score_from_image(image_bytes: bytes, caption: str = "") -> dic
     """
     b64 = base64.standard_b64encode(image_bytes).decode()
 
-    prompt = f"""Look at this screenshot from a medical student preparing for NEET PG.
+    prompt = f'''Look at this screenshot from a medical student preparing for NEET PG.
 Caption they wrote: "{caption}"
 
 Identify:
@@ -254,7 +257,7 @@ Reply ONLY in this JSON, no other text:
 
 For notebook photos (handwritten notes, revision material): set value="present", percentage=100.
 For unclear or unrelated screenshots: score_type="unknown".
-"""
+'''
 
     async def _call():
         resp = await _client.chat.completions.create(
@@ -311,22 +314,22 @@ def _strip_emojis(text: str) -> str:
     """Remove any emoji characters from text as a safety net."""
     emoji_pattern = re.compile(
         "["
-        "\U0001F600-\U0001F64F"
-        "\U0001F300-\U0001F5FF"
-        "\U0001F680-\U0001F6FF"
-        "\U0001F1E0-\U0001F1FF"
-        "\U00002702-\U000027B0"
-        "\U000024C2-\U0001F251"
-        "\U0001f926-\U0001f937"
-        "\U00010000-\U0010ffff"
-        "\u2640-\u2642"
-        "\u2600-\u2B55"
-        "\u200d"
-        "\u23cf"
-        "\u23e9"
-        "\u231a"
-        "\ufe0f"
-        "\u3030"
+        "\\U0001F600-\\U0001F64F"
+        "\\U0001F300-\\U0001F5FF"
+        "\\U0001F680-\\U0001F6FF"
+        "\\U0001F1E0-\\U0001F1FF"
+        "\\U00002702-\\U000027B0"
+        "\\U000024C2-\\U0001F251"
+        "\\U0001f926-\\U0001f937"
+        "\\U00010000-\\U0010ffff"
+        "\\u2640-\\u2642"
+        "\\u2600-\\u2B55"
+        "\\u200d"
+        "\\u23cf"
+        "\\u23e9"
+        "\\u231a"
+        "\\ufe0f"
+        "\\u3030"
         "]+",
         flags=re.UNICODE,
     )
