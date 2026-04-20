@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import logging
 import asyncio
+import re
 
 from config import OPS_GROUP_ID, YOUR_TELEGRAM_ID, STUDENTS, EYECONIC_SUPPORT_USERNAME
 from modules import ai_engine
@@ -48,6 +49,24 @@ async def handle_ops_message(event, client):
     if not text or len(text.strip()) < 10:
         return
 
+    # ── RELEVANCE CHECK ──────────────────────────────────────
+    # Only process if Shraddha is tagged OR if one of the 40 students is mentioned
+    text_lower = text.lower()
+    is_shraddha_tagged = "@eyeconicshraddha" in text_lower or "@shraddha" in text_lower
+    
+    mentioned_student_names = []
+    for sid, info in STUDENTS.items():
+        s_name = info["name"]
+        first_name = s_name.split()[0].lower()
+        full_name = s_name.lower()
+        # Match full name or first name with boundaries
+        if full_name in text_lower or re.search(r'\b' + re.escape(first_name) + r'\b', text_lower):
+            mentioned_student_names.append(s_name)
+
+    if not is_shraddha_tagged and not mentioned_student_names:
+        log.info(f"Ignoring irrelevant OPS message: {text[:50]}...")
+        return
+
     sender = await event.get_sender()
     sender_name = ""
     if sender:
@@ -60,6 +79,38 @@ async def handle_ops_message(event, client):
     # Classify the message
     classification = await ai_engine.classify_ops_message(text)
     msg_type = classification.get("type", "unknown")
+
+    # Filter target students from AI to only include our students
+    ai_targets = classification.get("target_students", [])
+    valid_targets = []
+    for t in ai_targets:
+        t_low = t.lower()
+        t_parts = [p for p in t_low.split() if len(p) > 2] # ignore short words
+        for sid, info in STUDENTS.items():
+            s_name = info["name"]
+            s_low = s_name.lower()
+            s_parts = s_low.split()
+            
+            # Match if full name in target or vice versa
+            if t_low in s_low or s_low in t_low:
+                if s_name not in valid_targets:
+                    valid_targets.append(s_name)
+                    continue
+            
+            # Match if any significant part of the name matches (e.g. "Mittali" matches "Mitali" if enough letters match)
+            # For simplicity, let's just check if the first 4 letters of any part match
+            for sp in s_parts:
+                for tp in t_parts:
+                    if sp[:4] == tp[:4] and len(sp) > 3:
+                        if s_name not in valid_targets:
+                            valid_targets.append(s_name)
+                            break
+                if s_name in valid_targets: break
+    
+    # If AI missed some mentioned students (from our regex check), add them
+    for m in mentioned_student_names:
+        if m not in valid_targets:
+            valid_targets.append(m)
 
     # Log to database
     await tracker.log_ops_announcement(
@@ -94,18 +145,10 @@ async def handle_ops_message(event, client):
             f"Reply SEND GT to forward to all students now."
         )
 
-    # ── SCHEDULE/SUBJECT CHANGE → tag eyeconicsupport ──
+    # ── SCHEDULE/SUBJECT CHANGE ──
     elif msg_type == "schedule_change":
-        log.info("Schedule change detected — tagging eyeconicsupport")
-        try:
-            await client.send_message(
-                OPS_GROUP_ID,
-                f"@{EYECONIC_SUPPORT_USERNAME} flagging this for review — "
-                f"subject order/date change noted.",
-                reply_to=msg.id,
-            )
-        except Exception as e:
-            log.error(f"Error tagging eyeconicsupport: {e}")
+        log.info("Schedule change detected — logging only (read-only mode)")
+        # NO LONGER TAGGING OPS GROUP
 
         await tracker.add_flag(
             flag_type="subject_change",
@@ -114,26 +157,27 @@ async def handle_ops_message(event, client):
 
         await client.send_message(
             YOUR_TELEGRAM_ID,
-            f"[OPS MONITOR] Schedule/subject change detected and @{EYECONIC_SUPPORT_USERNAME} tagged.\n\n{text[:300]}"
+            f"[OPS MONITOR] Schedule/subject change detected.\n\n{text[:300]}"
         )
 
     # ── STUDENT-SPECIFIC MESSAGE ──
-    elif msg_type == "student_specific":
-        target_names = classification.get("target_students", [])
-        if target_names:
+    elif msg_type == "student_specific" or valid_targets:
+        if valid_targets:
             await client.send_message(
                 YOUR_TELEGRAM_ID,
                 f"[OPS MONITOR] Student-specific message detected.\n"
-                f"Target students: {', '.join(target_names)}\n\n{text[:400]}\n\n"
+                f"Target students: {', '.join(valid_targets)}\n\n{text[:400]}\n\n"
                 f"Reply SEND SPECIFIC to forward to these students."
             )
-        # Store for potential forwarding
-        _ops_context["announcements"].append({
-            "text": text,
-            "type": msg_type,
-            "targets": target_names,
-            "message_id": msg.id,
-        })
+            # Store for potential forwarding
+            _ops_context["announcements"].append({
+                "text": text,
+                "type": "student_specific",
+                "targets": valid_targets,
+                "message_id": msg.id,
+            })
+        else:
+            log.info("Student-specific message ignored as no '40 students' were matched.")
 
     # ── GENERAL ANNOUNCEMENT (for all students) ──
     elif classification.get("needs_forwarding") and classification.get("for_all_students"):
@@ -209,16 +253,31 @@ async def forward_to_specific_students(client, text: str, student_names: list[st
                                         media=None):
     """Forward a message to specific students by name."""
     target_ids = []
+    # Lowercase names for matching
+    student_names_low = [t.lower() for t in student_names]
+    
     for chat_id, info in STUDENTS.items():
-        name = info["name"]
-        first_name = name.split()[0].lower()
-        full_lower = name.lower()
-        for target in student_names:
-            if target.lower() in full_lower or target.lower() == first_name:
-                target_ids.append(chat_id)
+        s_name = info["name"].lower()
+        s_parts = s_name.split()
+        first_name = s_parts[0]
+        
+        match = False
+        for target in student_names_low:
+            # Match full name, or first name, or if our name is inside the target string (e.g. "@Shraddha Mitali Mittal")
+            if target == s_name or target == first_name or s_name in target or first_name in target:
+                match = True
                 break
+            # Also check if any part of our name is exactly in target
+            if any(p == target for p in s_parts):
+                match = True
+                break
+        
+        if match:
+            target_ids.append(chat_id)
 
     if target_ids:
+        # Deduplicate IDs just in case
+        target_ids = list(set(target_ids))
         return await forward_to_students(client, text, target_ids, media)
     else:
         log.warning(f"No matching students found for: {student_names}")

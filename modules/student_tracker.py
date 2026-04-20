@@ -403,6 +403,17 @@ async def add_pending_reply(chat_id: int, trigger_message: str,
         await db.commit()
 
 
+async def has_pending_reply(chat_id: int) -> bool:
+    """Check if there's already a pending unsent reply for this student."""
+    async with aiosqlite.connect(DB_PATH) as db:
+        cursor = await db.execute(
+            "SELECT id FROM pending_replies WHERE chat_id = ? AND sent = 0",
+            (chat_id,)
+        )
+        row = await cursor.fetchone()
+        return row is not None
+
+
 async def get_due_replies() -> list[dict]:
     """Get all pending replies that are due to be sent."""
     now = now_ist().isoformat()

@@ -14,6 +14,7 @@ Subsequent runs: uses the saved session file automatically.
 import logging
 import asyncio
 import sys
+import aiosqlite
 from pathlib import Path
 
 from telethon import TelegramClient, events
@@ -25,7 +26,7 @@ from zoneinfo import ZoneInfo
 from config import (
     TELEGRAM_API_ID, TELEGRAM_API_HASH, SESSION_NAME,
     YOUR_TELEGRAM_ID, OPS_GROUP_ID, STUDENTS, TIMEZONE, DATA_DIR,
-    INACTIVE_DAYS_THRESHOLD
+    INACTIVE_DAYS_THRESHOLD, DB_PATH
 )
 from modules import student_tracker as tracker
 from modules import message_handler
@@ -106,64 +107,47 @@ async def main():
     me = await client.get_me()
     log.info(f"Logged in as: {me.first_name} (@{me.username}), ID: {me.id}")
 
-    # ── STARTUP ACTIVITY CHECK ───────────────────────────
-    # Check for messages that were sent while the bot was offline
-    # This ensures students are correctly mapped as "active"
-    log.info("Running startup activity check for all students...")
+    # ── STARTUP CATCH-UP & ACTIVITY CHECK ────────────────────
+    # Check for messages sent while the bot was offline.
+    # NOTE: No manual sleep needed here — the global throttle in ai_engine
+    # (_throttled_call, 15s interval) serializes all Groq calls automatically.
+    # 40 students will be processed in ~10 minutes without hitting rate limits.
+    log.info("Running startup catch-up check for all students...")
     all_db_students = await tracker.get_all_students()
+
+    class MockEvent:
+        def __init__(self, message, chat_id):
+            self.message = message
+            self.chat_id = chat_id
+        async def get_sender(self):
+            return await self.message.get_sender()
+
     for student in all_db_students:
         cid = student["chat_id"]
-        # Only check if last_message_at is missing OR if we want to be thorough
-        # For now, let's check everyone to ensure perfect mapping
         try:
-            # Get the latest message from the student (not the bot)
-            found = False
-            async for message in client.iter_messages(cid, limit=20):
+            async for message in client.iter_messages(cid, limit=1):
                 if message.sender_id != me.id:
-                    found = True
                     msg_ts = message.date.astimezone(tracker.ZoneInfo(TIMEZONE))
                     days_since = (tracker.now_ist() - msg_ts).days
-                    
-                    new_status = "active"
-                    if days_since >= INACTIVE_DAYS_THRESHOLD:
-                        new_status = "inactive"
+                    new_status = "active" if days_since < INACTIVE_DAYS_THRESHOLD else "inactive"
 
-                    # Update DB if this message is newer than what we have or if we are correcting status
-                    current_last = student.get("last_message_at")
-                    if not current_last or msg_ts.isoformat() > current_last or student.get("status") != new_status:
-                        import aiosqlite
-                        from config import DB_PATH
-                        async with aiosqlite.connect(DB_PATH) as db:
-                            await db.execute(
-                                "UPDATE students SET last_message_at = ?, status = ? WHERE chat_id = ?",
-                                (msg_ts.isoformat(), new_status, cid)
-                            )
-                            await db.commit()
-                        log.info(f"Startup catch-up: Updated {student['name']} to {new_status} (Last: {msg_ts.strftime('%Y-%m-%d %H:%M')})")
-                    break # Found the latest student message, move to next student
-            
-            if not found:
-                # No student message found in history. 
-                # If they were created more than X days ago, mark as inactive.
-                created_at = student.get("created_at")
-                if created_at:
-                    try:
-                        if " " in created_at and "T" not in created_at:
-                            created_at = created_at.replace(" ", "T")
-                        created_dt = datetime.fromisoformat(created_at).replace(tzinfo=ZoneInfo(TIMEZONE))
-                        if (tracker.now_ist() - created_dt).days >= INACTIVE_DAYS_THRESHOLD:
-                            if student.get("status") != "inactive":
-                                import aiosqlite
-                                from config import DB_PATH
-                                async with aiosqlite.connect(DB_PATH) as db:
-                                    await db.execute(
-                                        "UPDATE students SET status = 'inactive' WHERE chat_id = ?",
-                                        (cid,)
-                                    )
-                                    await db.commit()
-                                log.info(f"Startup catch-up: {student['name']} marked inactive (No messages found, account old)")
-                    except Exception:
-                        pass
+                    async with aiosqlite.connect(DB_PATH) as db:
+                        await db.execute(
+                            "UPDATE students SET last_message_at = ?, status = ? WHERE chat_id = ?",
+                            (msg_ts.isoformat(), new_status, cid)
+                        )
+                        await db.commit()
+
+                    # Catch-up reply: only if message is within last 12 hours
+                    if (tracker.now_ist() - msg_ts).total_seconds() < 43200:
+                        log.info(f"Startup catch-up: found missed message from {student['name']}, queuing reply.")
+                        mock_event = MockEvent(message, cid)
+                        # Fire and forget — throttle in ai_engine handles spacing
+                        asyncio.create_task(
+                            message_handler.handle_student_message(mock_event, client)
+                        )
+                break
+
         except Exception as e:
             log.warning(f"Could not check activity for {student['name']}: {e}")
 
@@ -173,7 +157,7 @@ async def main():
             f"logged-in account ({me.id}). Updating to match."
         )
 
-    # ── EVENT HANDLERS ──────────────────────────────────────
+    # ── EVENT HANDLERS ───────────────────────────────────────
 
     # 1. Student chat messages
     student_chat_ids = list(STUDENTS.keys())
@@ -204,7 +188,6 @@ async def main():
         Only processes messages in your private chat (Saved Messages).
         """
         try:
-            # Only process messages sent to Saved Messages (chat with yourself)
             if not event.is_private:
                 return
 
@@ -223,12 +206,12 @@ async def main():
         except Exception as e:
             log.error(f"Error handling self message: {e}", exc_info=True)
 
-    # ── SCHEDULER ───────────────────────────────────────────
+    # ── SCHEDULER ────────────────────────────────────────────
     scheduler = create_scheduler()
     setup_jobs(scheduler, client)
     scheduler.start()
 
-    # ── STARTUP MESSAGE ─────────────────────────────────────
+    # ── STARTUP MESSAGE ──────────────────────────────────────
     student_count = len(STUDENTS)
     active = await tracker.get_active_students()
 

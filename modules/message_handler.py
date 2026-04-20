@@ -112,7 +112,7 @@ async def handle_student_message(event, client):
         await _schedule_delayed_reply(client, chat_id, text, reply)
         return
 
-    # ── SUBJECT ORDER CHANGE → tag eyeconicsupport on OPS ────
+    # ── SUBJECT ORDER CHANGE ─────────────────────────────────
     if is_subject_change:
         await tracker.add_flag(
             flag_type="subject_change",
@@ -121,19 +121,10 @@ async def handle_student_message(event, client):
             content=text,
         )
 
-        try:
-            await client.send_message(
-                OPS_GROUP_ID,
-                f"@{EYECONIC_SUPPORT_USERNAME} — {student_info['name']} is requesting "
-                f"a change: \"{text[:200]}\". Please review."
-            )
-        except Exception as e:
-            log.error(f"Error tagging eyeconicsupport: {e}")
-
         await client.send_message(
             YOUR_TELEGRAM_ID,
             f"[SUBJECT CHANGE] {student_info['name']}:\n\"{text}\"\n\n"
-            f"Tagged @{EYECONIC_SUPPORT_USERNAME} on OPS group."
+            f"This is regarding the time table change. Please tag your leadership to deal with it for this student."
         )
 
         reply = f"Noted, {name}. I have raised this with the team, they will update it."
@@ -167,6 +158,20 @@ async def handle_student_message(event, client):
     # ── IRRELEVANT / NO REPLY NEEDED ─────────────────────────
     if not needs_reply:
         log.info(f"No reply needed for message from {name}: {msg_type}")
+        await client.send_message(
+            YOUR_TELEGRAM_ID,
+            f"[INFO] No automated reply sent to {name} (type: {msg_type})."
+        )
+        return
+
+    # ── DUPLICATE CHECK ──────────────────────────────────────
+    # 1. Check if there's already a pending reply in the queue
+    if await tracker.has_pending_reply(chat_id):
+        log.info(f"Skipping reply to {name} — pending reply already exists.")
+        await client.send_message(
+            YOUR_TELEGRAM_ID,
+            f"[INFO] Skipping duplicate reply to {name} (one is already pending)."
+        )
         return
 
     # ── GENERATE CONTEXTUAL REPLY ────────────────────────────
@@ -334,6 +339,14 @@ async def dispatch_pending_replies(client):
         text = reply["reply_text"]
         try:
             await client.send_message(chat_id, text)
+
+            # Notify Shraddha
+            student_info = STUDENTS.get(chat_id, {})
+            name = student_info.get("name", "Unknown")
+            await client.send_message(
+                YOUR_TELEGRAM_ID,
+                f"{name} - solved query"
+            )
 
             # Log the outgoing message
             await tracker.log_message(

@@ -32,7 +32,7 @@ SESSION_NAME = "shraddha_session"
 # ─────────────────────────────────────────────────────────────
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_TEXT_MODEL = "llama-3.3-70b-versatile"
-GROQ_VISION_MODEL = "llama-3.2-11b-vision-preview"
+GROQ_VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 
 # ─────────────────────────────────────────────────────────────
 # GOOGLE SHEETS
@@ -82,7 +82,7 @@ SCHEDULE = {
 
 # Reply delay range (seconds) — to look human when replying to messages
 REPLY_DELAY_MIN = 120   # 2 minutes
-REPLY_DELAY_MAX = 300   # 5 minutes
+REPLY_DELAY_MAX = 121   # 2 minutes (small variance)
 
 # Stagger delay between students during scheduled check-ins (seconds)
 STUDENT_STAGGER_MIN = 5
@@ -398,7 +398,7 @@ ABSOLUTE RULES:
 1. ZERO emojis. Not a single one. Ever.
 2. Professional, direct, and warm. No fluff, but plenty of encouragement.
 3. Messages are 1 to 3 lines maximum. Never write paragraphs.
-4. Use the student's first name naturally.
+4. Use the student's first name naturally but sparingly. Do not use it in every message if you have already addressed them recently in the chat history. Addressing them by name once at the start of a conversation is plenty.
 5. Use "we" often — emphasize that you are a team working toward the same goal.
 6. Never reveal you are an AI.
 7. Sound like a real person typing on their phone — natural and human.

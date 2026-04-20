@@ -1,6 +1,14 @@
 """
 AI Engine — Groq API wrapper for text generation and vision/OCR.
 Uses the free tier of Groq with Llama models.
+
+Rate limit strategy:
+- Groq free tier: ~30 RPM but only ~6000 tokens/min for Llama 3.3 70B
+- Token cost per call: classify ~350 tokens, generate ~950 tokens
+- Full reply (classify + generate) = ~1300 tokens
+- 6000 tokens/min ÷ 1300 = 4.6 students/min → 13s minimum interval
+- _MIN_INTERVAL set to 15s for safety buffer
+- 40 students × 15s = ~10 minutes max queue drain (well within 1 hour SLA)
 """
 
 import re
@@ -8,7 +16,8 @@ import json
 import base64
 import logging
 import asyncio
-from groq import Groq, AsyncGroq
+import time
+from groq import AsyncGroq
 
 from config import GROQ_API_KEY, GROQ_TEXT_MODEL, GROQ_VISION_MODEL, SHRADDHA_PERSONA
 
@@ -20,22 +29,53 @@ log = logging.getLogger(__name__)
 _client = AsyncGroq(api_key=GROQ_API_KEY)
 
 
-async def _retry_with_backoff(func, max_retries=3):
-    """Retry a Groq API call with exponential backoff on rate limits."""
-    for attempt in range(max_retries):
-        try:
-            return await func()
-        except Exception as e:
-            error_str = str(e)
-            if "429" in error_str or "rate_limit" in error_str.lower():
-                wait = (2 ** attempt) * 5
-                log.warning(f"Groq rate limit hit, waiting {wait}s (attempt {attempt + 1}/{max_retries})")
-                await asyncio.sleep(wait)
-            else:
-                log.error(f"Groq API error: {e}")
-                raise
-    log.error("Groq API: max retries exhausted")
-    return None
+# ─────────────────────────────────────────────────────────────
+# GLOBAL THROTTLE
+# 15s between calls = 4/min = safe under 6000 tokens/min limit
+# All 40 students processed in ~10 minutes, well within 1 hour SLA
+# ─────────────────────────────────────────────────────────────
+_throttle_lock = asyncio.Lock()
+_last_call_time: float = 0.0
+_MIN_INTERVAL: float = 15.0  # seconds between API calls
+
+
+async def _throttled_call(func, max_retries: int = 5):
+    """
+    Serialize ALL Groq calls through a single lock with a minimum gap,
+    then retry with exponential backoff on rate limit errors.
+    Prevents burst firing during scheduled check-ins with 40 students.
+    """
+    global _last_call_time
+
+    async with _throttle_lock:
+        # Enforce minimum gap between calls
+        now = time.monotonic()
+        gap = _MIN_INTERVAL - (now - _last_call_time)
+        if gap > 0:
+            await asyncio.sleep(gap)
+
+        for attempt in range(max_retries):
+            try:
+                result = await func()
+                _last_call_time = time.monotonic()
+                return result
+            except Exception as e:
+                error_str = str(e)
+                if "429" in error_str or "rate_limit" in error_str.lower():
+                    # Exponential backoff: 15s, 30s, 60s, 120s, 240s
+                    wait = _MIN_INTERVAL * (2 ** attempt)
+                    log.warning(
+                        f"Groq rate limit hit, waiting {wait:.0f}s "
+                        f"(attempt {attempt + 1}/{max_retries})"
+                    )
+                    await asyncio.sleep(wait)
+                    _last_call_time = time.monotonic()
+                else:
+                    log.error(f"Groq API error (non-rate-limit): {e}")
+                    raise
+
+        log.error("Groq API: max retries exhausted")
+        return None
 
 
 # ─────────────────────────────────────────────────────────────
@@ -58,16 +98,18 @@ async def generate_message(prompt: str, max_tokens: int = 250) -> str:
         )
         return resp.choices[0].message.content.strip()
 
-    result = await _retry_with_backoff(_call)
+    result = await _throttled_call(_call)
     if result is None:
         log.error("generate_message: failed after retries")
         return ""
 
-    # Safety: strip any emojis that might slip through
     result = _strip_emojis(result)
     return result
 
 
+# ─────────────────────────────────────────────────────────────
+# MESSAGE CLASSIFICATION
+# ─────────────────────────────────────────────────────────────
 async def classify_message(text: str) -> dict:
     """
     Classify a student message to determine its type and whether it needs a reply.
@@ -98,7 +140,7 @@ Rules:
 - "question": general questions directed at the mentor
 
 "is_planner" Rule:
-Only set "is_planner": true if the student is asking the mentor to CHANGE their official schedule/dates. 
+Only set "is_planner": true if the student is asking the mentor to CHANGE their official schedule/dates.
 If they are just sharing their plan for the day, set "is_planner": false.
 """
 
@@ -114,7 +156,7 @@ If they are just sharing their plan for the day, set "is_planner": false.
         return json.loads(raw)
 
     try:
-        result = await _retry_with_backoff(_call)
+        result = await _throttled_call(_call)
         if result is None:
             return {"type": "unknown", "needs_reply": True, "is_planner": False,
                     "is_subject_change": False, "summary": text[:100]}
@@ -125,6 +167,9 @@ If they are just sharing their plan for the day, set "is_planner": false.
                 "is_subject_change": False, "summary": text[:100]}
 
 
+# ─────────────────────────────────────────────────────────────
+# OPS MESSAGE CLASSIFICATION
+# ─────────────────────────────────────────────────────────────
 async def classify_ops_message(text: str) -> dict:
     """
     Classify a message from the Eyeconic OPS Tele group.
@@ -171,7 +216,7 @@ Rules:
         return json.loads(raw)
 
     try:
-        result = await _retry_with_backoff(_call)
+        result = await _throttled_call(_call)
         if result is None:
             return {"type": "unknown", "for_all_students": False,
                     "target_students": [], "is_quiz_link": False,
@@ -232,7 +277,7 @@ For unclear or unrelated screenshots: score_type="unknown".
         return json.loads(raw)
 
     try:
-        result = await _retry_with_backoff(_call)
+        result = await _throttled_call(_call)
         if result is None:
             return {"score_type": "unknown", "value": "", "percentage": 0.0}
         return result
@@ -241,6 +286,9 @@ For unclear or unrelated screenshots: score_type="unknown".
         return {"score_type": "unknown", "value": "", "percentage": 0.0}
 
 
+# ─────────────────────────────────────────────────────────────
+# GT CLASSIFICATION VALIDATOR
+# ─────────────────────────────────────────────────────────────
 def validate_gt_classification(text: str) -> dict:
     """Check that GT classification text contains all required elements."""
     tl = text.lower()
@@ -263,10 +311,10 @@ def _strip_emojis(text: str) -> str:
     """Remove any emoji characters from text as a safety net."""
     emoji_pattern = re.compile(
         "["
-        "\U0001F600-\U0001F64F"  # emoticons
-        "\U0001F300-\U0001F5FF"  # symbols & pictographs
-        "\U0001F680-\U0001F6FF"  # transport & map
-        "\U0001F1E0-\U0001F1FF"  # flags
+        "\U0001F600-\U0001F64F"
+        "\U0001F300-\U0001F5FF"
+        "\U0001F680-\U0001F6FF"
+        "\U0001F1E0-\U0001F1FF"
         "\U00002702-\U000027B0"
         "\U000024C2-\U0001F251"
         "\U0001f926-\U0001f937"
