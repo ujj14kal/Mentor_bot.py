@@ -194,11 +194,11 @@ Recent conversation:
 {history_str}
 
 Reply as their accountability partner. Be specific to what they said.
-If it's a progress update: acknowledge specifically, push forward, ask a follow-up.
-If it's a doubt about studies: answer clearly and practically.
-If they just returned after being silent: address the gap directly, then help them move forward.
-If CM or mynb still pending, remind them without being repetitive if you already mentioned it.
-Keep it 1-3 lines. Natural. No emojis."""
+If it's a progress update: acknowledge specifically with positive reinforcement, and encourage the next step.
+If it's a doubt about studies: answer clearly, practically, and supportively.
+If they just returned after being silent: welcome them back warmly, acknowledge the gap briefly, and help them get back to the routine with a positive focus.
+If CM or mynb still pending, encourage them to complete it soon so we can finish the day strong.
+Keep it 1-3 lines. Natural, motivational, and positive. No emojis."""
 
     reply = await ai_engine.generate_message(prompt)
     if reply:

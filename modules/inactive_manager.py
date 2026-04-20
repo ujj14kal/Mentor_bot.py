@@ -104,11 +104,11 @@ async def ping_inactive_students(client):
         prompt = f"""Student: {name} | Batch: {batch}
 Days without any message: {days}
 
-Write a firm but motivating message to {name} about the importance of daily communication
-and consistency. Address the silence directly — {days} days is significant.
-Be direct but do not guilt trip excessively.
-Reference that this communication is a crucial part of their preparation journey.
-Make it personal and warm but firm. 1-3 lines. No emojis."""
+Write a very motivational and positive message to {name} to encourage them to get back on track.
+Acknowledge that they've been away for {days} days, but emphasize that we're here to support them
+and that today is a perfect day to restart their consistent routine.
+Remind them that daily communication is a key part of their preparation journey.
+Make it personal, warm, and highly encouraging. 1-3 lines. No emojis."""
 
         reply = await ai_engine.generate_message(prompt)
         if reply:

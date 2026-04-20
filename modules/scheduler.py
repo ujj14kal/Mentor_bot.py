@@ -275,9 +275,9 @@ def _build_checkin_prompt(window: str, name: str, batch: str, day: str,
 Days silent before today: {silent_days}
 """
         if silent_days > 2:
-            base += f"\n{name} has been silent for {silent_days} days. Address this first, then ask for today's plan."
+            base += f"\n{name} has been silent for {silent_days} days. Gently encourage them to get back to the routine and ask for today's plan."
         else:
-            base += f"\nWrite a morning check-in. Ask {name} to share today's task plan."
+            base += f"\nWrite a positive morning check-in. Ask {name} to share today's task plan."
 
         if is_friday:
             base += "\nToday is Friday — quiz day. Remind about the quiz."
@@ -317,13 +317,13 @@ CM submitted today: {cm_done} | Notebook submitted: {nb_done}
 Days silent: {silent_days}
 
 Write an evening check-in.
-{'Both CM and notebook are done — appreciate specifically and close the day.' if cm_done and nb_done else ''}
-{'CM and notebook still missing — be firm.' if not cm_done and not nb_done else ''}
-{'CM is done but notebook is still missing.' if cm_done and not nb_done else ''}
-{'Notebook is done but CM score is still pending.' if not cm_done and nb_done else ''}
+{'Both CM and notebook are done — acknowledge their consistency with positive reinforcement and close the day.' if cm_done and nb_done else ''}
+{'CM and notebook still missing — encourage them to finish strong or check if they need help to get back on track.' if not cm_done and not nb_done else ''}
+{'CM is done but notebook is still missing — encourage them to finish the notebook too.' if cm_done and not nb_done else ''}
+{'Notebook is done but CM score is still pending — encourage them to finish the CM too.' if not cm_done and nb_done else ''}
 {'Ask about quiz submission.' if is_friday and not daily.get('quiz_submitted') else ''}
 {'Ask about GT and classification.' if is_sunday and not daily.get('gt_submitted') else ''}
-Keep it 1-3 lines. Be firm about missing submissions. No emojis."""
+Keep it 1-3 lines. Be motivational and positive. No emojis."""
 
 
 # ─────────────────────────────────────────────────────────────
