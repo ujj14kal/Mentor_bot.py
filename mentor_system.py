@@ -19,6 +19,8 @@ import os
 import fcntl
 import aiosqlite
 from pathlib import Path
+from dataclasses import dataclass
+from typing import Optional
 
 from telethon import TelegramClient, events
 from zoneinfo import ZoneInfo
@@ -39,6 +41,16 @@ from modules.scheduler import create_scheduler, setup_jobs
 # ─────────────────────────────────────────────────────────────
 _LOCK_FILE = DATA_DIR / "mentor.lock"
 _lock_fh = None
+_STARTUP_CATCHUP_DELAY_SECONDS = 90
+_startup_catchup_queue: Optional[asyncio.Queue] = None
+
+
+@dataclass
+class StartupCatchupItem:
+    student_name: str
+    chat_id: int
+    msg_id: int
+    event: object
 
 
 def acquire_single_instance_lock():
@@ -74,9 +86,9 @@ logging.basicConfig(
     format="%(asctime)s | %(levelname)-7s | %(name)-20s | %(message)s",
     level=logging.INFO,
     handlers=[
-        logging.StreamHandler(),
         logging.FileHandler(DATA_DIR / "mentor.log", encoding="utf-8"),
     ],
+    force=True,
 )
 log = logging.getLogger("mentor_system")
 
@@ -116,6 +128,45 @@ async def _set_last_replied_msg_id(chat_id: int, msg_id: int):
             (msg_id, chat_id)
         )
         await db.commit()
+
+
+def _get_startup_catchup_queue() -> asyncio.Queue:
+    """Get or create the in-memory startup catch-up queue."""
+    global _startup_catchup_queue
+    if _startup_catchup_queue is None:
+        _startup_catchup_queue = asyncio.Queue()
+    return _startup_catchup_queue
+
+
+async def _process_startup_catchup_queue(client):
+    """
+    Drain startup catch-up slowly in the background so the bot can come online
+    without blasting Groq with a large restart backlog.
+    """
+    queue = _get_startup_catchup_queue()
+
+    while True:
+        item: StartupCatchupItem = await queue.get()
+        try:
+            last_replied_id = await _get_last_replied_msg_id(item.chat_id)
+            if last_replied_id and last_replied_id >= item.msg_id:
+                log.info(
+                    f"Startup catch-up: skipping {item.student_name} "
+                    f"(msg_id={item.msg_id}) because a newer reply is already recorded."
+                )
+                continue
+
+            await message_handler.handle_student_message(item.event, client)
+            await _set_last_replied_msg_id(item.chat_id, item.msg_id)
+            log.info(f"Startup catch-up: replied to {item.student_name} (msg_id={item.msg_id})")
+        except Exception as e:
+            log.warning(f"Startup catch-up reply failed for {item.student_name}: {e}")
+        finally:
+            queue.task_done()
+
+        # Add extra spacing between offline catch-up items so live messages
+        # can be prioritized and Groq does not get hammered right after restart.
+        await asyncio.sleep(_STARTUP_CATCHUP_DELAY_SECONDS)
 
 
 # ─────────────────────────────────────────────────────────────
@@ -165,7 +216,7 @@ async def run_startup_catchup(client, me):
         async def get_sender(self):
             return await self.message.get_sender()
 
-    catchup_queue = []
+    catchup_queue = _get_startup_catchup_queue()
 
     for student in all_db_students:
         cid = student["chat_id"]
@@ -203,26 +254,28 @@ async def run_startup_catchup(client, me):
                 age_hours = (now_ist - msg_ts).total_seconds() / 3600
                 if age_hours < 12:
                     log.info(f"Startup catch-up: queuing reply for {student['name']} (msg_id={message.id})")
-                    catchup_queue.append((student["name"], cid, message.id, MockEvent(message, cid)))
+                    catchup_queue.put_nowait(
+                        StartupCatchupItem(
+                            student_name=student["name"],
+                            chat_id=cid,
+                            msg_id=message.id,
+                            event=MockEvent(message, cid),
+                        )
+                    )
                 break
 
         except Exception as e:
             log.warning(f"Could not check activity for {student['name']}: {e}")
 
-    if not catchup_queue:
+    queued_count = catchup_queue.qsize()
+    if queued_count == 0:
         log.info("Startup catch-up: no missed messages to reply to.")
         return
 
-    log.info(f"Startup catch-up: {len(catchup_queue)} students need replies. Processing sequentially...")
-
-    for name, cid, msg_id, mock_event in catchup_queue:
-        try:
-            await message_handler.handle_student_message(mock_event, client)
-            # Mark this message as replied so next restart skips it
-            await _set_last_replied_msg_id(cid, msg_id)
-            log.info(f"Startup catch-up: replied to {name} (msg_id={msg_id})")
-        except Exception as e:
-            log.warning(f"Startup catch-up reply failed for {name}: {e}")
+    log.info(
+        f"Startup catch-up: {queued_count} students need replies. "
+        f"Queued for background processing every {_STARTUP_CATCHUP_DELAY_SECONDS}s."
+    )
 
 
 # ─────────────────────────────────────────────────────────────
@@ -250,6 +303,10 @@ async def main():
     me = await client.get_me()
     log.info(f"Logged in as: {me.first_name} (@{me.username}), ID: {me.id}")
 
+    # Start the catch-up worker before collecting backlog items so restart
+    # messages drain safely in the background instead of blocking startup.
+    asyncio.create_task(_process_startup_catchup_queue(client))
+
     # Run catch-up before registering event handlers to avoid double-processing
     await run_startup_catchup(client, me)
 
@@ -260,9 +317,8 @@ async def main():
         @client.on(events.NewMessage(chats=student_chat_ids))
         async def on_student_message(event):
             try:
-                # Mark as replied when a live message comes in
-                await _set_last_replied_msg_id(event.chat_id, event.message.id)
                 await message_handler.handle_student_message(event, client)
+                await _set_last_replied_msg_id(event.chat_id, event.message.id)
             except Exception as e:
                 log.error(f"Error handling student message: {e}", exc_info=True)
 
