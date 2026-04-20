@@ -4307,3 +4307,59 @@ sqlite3.OperationalError: database is locked
 2026-04-20 12:46:57,425 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-04-20 12:46:57,427 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
 2026-04-20 12:46:57,427 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 12:48:57,519 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:48:57,519 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:48:57,520 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-04-20 12:48:57,520 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 20.000000 seconds
+2026-04-20 12:49:18,036 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:49:18,036 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:49:18,061 | INFO    | modules.message_handler | Message from Chandrima classified as: work_update (reply: False)
+2026-04-20 12:49:18,061 | INFO    | modules.message_handler | Message from Chandrima classified as: work_update (reply: False)
+2026-04-20 12:49:18,061 | INFO    | modules.message_handler | No reply needed for message from Chandrima: work_update
+2026-04-20 12:49:18,061 | INFO    | modules.message_handler | No reply needed for message from Chandrima: work_update
+2026-04-20 12:49:33,165 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:49:33,165 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:49:33,167 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:49:33,167 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:49:48,333 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:49:48,333 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:49:48,334 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:49:48,334 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:50:18,445 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:50:18,445 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:50:18,447 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:50:18,447 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:51:18,540 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:51:18,540 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:51:18,541 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 12:51:18,541 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 120s (attempt 4/5)
+2026-04-20 12:53:18,750 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:53:18,750 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:53:18,751 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)
+2026-04-20 12:53:18,751 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 240s (attempt 5/5)
+2026-04-20 12:57:18,753 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:57:18,753 | ERROR   | modules.ai_engine    | Groq API: max retries exhausted
+2026-04-20 12:57:18,753 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 12:57:18,753 | INFO    | modules.message_handler | Message from Noel classified as: unknown (reply: True)
+2026-04-20 12:57:33,909 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:57:33,909 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:57:33,910 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-04-20 12:57:33,910 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 6.000000 seconds
+2026-04-20 12:57:40,485 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:57:40,485 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 12:57:40,487 | INFO    | modules.message_handler | Message from Aayushi classified as: work_update (reply: False)
+2026-04-20 12:57:40,487 | INFO    | modules.message_handler | Message from Aayushi classified as: work_update (reply: False)
+2026-04-20 12:57:40,487 | INFO    | modules.message_handler | No reply needed for message from Aayushi: work_update
+2026-04-20 12:57:40,487 | INFO    | modules.message_handler | No reply needed for message from Aayushi: work_update
+2026-04-20 12:57:55,888 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:57:55,888 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:57:55,890 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:57:55,890 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 15s (attempt 1/5)
+2026-04-20 12:58:11,057 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:58:11,057 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:58:11,059 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:58:11,059 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 30s (attempt 2/5)
+2026-04-20 12:58:41,148 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:58:41,148 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 12:58:41,149 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)
+2026-04-20 12:58:41,149 | WARNING | modules.ai_engine    | Groq rate limit hit, waiting 60s (attempt 3/5)

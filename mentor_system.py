@@ -2,25 +2,25 @@
 Eyeconic Mentor System — Main Entry Point
 ==========================================
 A Telethon userbot that sends messages through your personal Telegram account.
-Messages look exactly like you're typing them — nobody knows it's automated.
 
-Usage:
-    python mentor_system.py
-
-First run: will prompt for phone number and OTP to create a session.
-Subsequent runs: uses the saved session file automatically.
+Key fixes vs previous version:
+- Single instance lock (no duplicate processes / DB lock errors)
+- Catch-up tracks last replied message ID per student — no duplicate replies
+- Sequential catch-up with proper throttling
+- Python 3.9 compatible throughout
 """
+
+from __future__ import annotations
 
 import logging
 import asyncio
 import sys
+import os
+import fcntl
 import aiosqlite
 from pathlib import Path
 
 from telethon import TelegramClient, events
-from telethon.tl.types import PeerUser
-
-from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from config import (
@@ -35,6 +35,39 @@ from modules import confirmation
 from modules.scheduler import create_scheduler, setup_jobs
 
 # ─────────────────────────────────────────────────────────────
+# SINGLE INSTANCE LOCK
+# ─────────────────────────────────────────────────────────────
+_LOCK_FILE = DATA_DIR / "mentor.lock"
+_lock_fh = None
+
+
+def acquire_single_instance_lock():
+    global _lock_fh
+    try:
+        _lock_fh = open(_LOCK_FILE, "w")
+        fcntl.flock(_lock_fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        _lock_fh.write(str(os.getpid()))
+        _lock_fh.flush()
+    except IOError:
+        print(
+            "ERROR: Another instance is already running.\n"
+            "Kill it first, or delete data/mentor.lock if it's stale."
+        )
+        sys.exit(1)
+
+
+def release_single_instance_lock():
+    global _lock_fh
+    if _lock_fh:
+        try:
+            fcntl.flock(_lock_fh, fcntl.LOCK_UN)
+            _lock_fh.close()
+            _LOCK_FILE.unlink(missing_ok=True)
+        except Exception:
+            pass
+
+
+# ─────────────────────────────────────────────────────────────
 # LOGGING
 # ─────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -47,16 +80,48 @@ logging.basicConfig(
 )
 log = logging.getLogger("mentor_system")
 
-# Suppress noisy loggers
 logging.getLogger("telethon").setLevel(logging.WARNING)
 logging.getLogger("apscheduler").setLevel(logging.WARNING)
+
+
+# ─────────────────────────────────────────────────────────────
+# REPLY TRACKING — prevents duplicate catch-up replies
+# ─────────────────────────────────────────────────────────────
+async def _ensure_reply_tracking_table():
+    """Add last_replied_msg_id column to students table if missing."""
+    async with aiosqlite.connect(DB_PATH) as db:
+        # Add column only if it doesn't exist (safe to call repeatedly)
+        try:
+            await db.execute(
+                "ALTER TABLE students ADD COLUMN last_replied_msg_id INTEGER DEFAULT 0"
+            )
+            await db.commit()
+        except Exception:
+            pass  # Column already exists
+
+
+async def _get_last_replied_msg_id(chat_id: int) -> int:
+    async with aiosqlite.connect(DB_PATH) as db:
+        cursor = await db.execute(
+            "SELECT last_replied_msg_id FROM students WHERE chat_id = ?", (chat_id,)
+        )
+        row = await cursor.fetchone()
+        return row[0] if row and row[0] else 0
+
+
+async def _set_last_replied_msg_id(chat_id: int, msg_id: int):
+    async with aiosqlite.connect(DB_PATH) as db:
+        await db.execute(
+            "UPDATE students SET last_replied_msg_id = ? WHERE chat_id = ?",
+            (msg_id, chat_id)
+        )
+        await db.commit()
 
 
 # ─────────────────────────────────────────────────────────────
 # VALIDATION
 # ─────────────────────────────────────────────────────────────
 def validate_config():
-    """Check that essential config values are filled in."""
     errors = []
     if not TELEGRAM_API_ID or TELEGRAM_API_ID == 0:
         errors.append("TELEGRAM_API_ID is not set in .env")
@@ -70,13 +135,94 @@ def validate_config():
         errors.append("GROQ_API_KEY is not set in .env")
 
     if not STUDENTS:
-        log.warning("No students configured in config.py — system will run but won't message anyone")
+        log.warning("No students configured — system will run but won't message anyone")
 
     if errors:
         for e in errors:
             log.error(f"Config error: {e}")
-        log.error("Fix the above errors in .env and config.py before running")
         sys.exit(1)
+
+
+# ─────────────────────────────────────────────────────────────
+# STARTUP CATCH-UP
+# ─────────────────────────────────────────────────────────────
+async def run_startup_catchup(client, me):
+    """
+    Check for messages sent while offline.
+    - Only processes messages from the last 12 hours
+    - Skips students whose last message was already replied to (tracks by message ID)
+    - Runs one student at a time — no burst firing
+    """
+    log.info("Running startup activity check for all students...")
+    all_db_students = await tracker.get_all_students()
+    now_ist = tracker.now_ist()
+
+    class MockEvent:
+        def __init__(self, message, chat_id):
+            self.message = message
+            self.chat_id = chat_id
+
+        async def get_sender(self):
+            return await self.message.get_sender()
+
+    catchup_queue = []
+
+    for student in all_db_students:
+        cid = student["chat_id"]
+        try:
+            last_replied_id = await _get_last_replied_msg_id(cid)
+
+            async for message in client.iter_messages(cid, limit=1):
+                # Skip if the last message is from us
+                if message.sender_id == me.id:
+                    break
+
+                # Skip if we already replied to this exact message
+                if message.id == last_replied_id:
+                    log.debug(f"Startup catch-up: {student['name']} already replied to msg {message.id}, skipping.")
+                    break
+
+                msg_ts = message.date.astimezone(ZoneInfo(TIMEZONE))
+                days_since = (now_ist - msg_ts).days
+                new_status = "active" if days_since < INACTIVE_DAYS_THRESHOLD else "inactive"
+
+                # Update activity timestamp and status
+                async with aiosqlite.connect(DB_PATH) as db:
+                    await db.execute(
+                        "UPDATE students SET last_message_at = ?, status = ? WHERE chat_id = ?",
+                        (msg_ts.isoformat(), new_status, cid)
+                    )
+                    await db.commit()
+
+                log.info(
+                    f"Startup catch-up: Updated {student['name']} to {new_status} "
+                    f"(Last: {msg_ts.strftime('%Y-%m-%d %H:%M')})"
+                )
+
+                # Only queue a reply if the message is recent (< 12 hours)
+                age_hours = (now_ist - msg_ts).total_seconds() / 3600
+                if age_hours < 12:
+                    log.info(f"Startup catch-up: queuing reply for {student['name']} (msg_id={message.id})")
+                    catchup_queue.append((student["name"], cid, message.id, MockEvent(message, cid)))
+                break
+
+        except Exception as e:
+            log.warning(f"Could not check activity for {student['name']}: {e}")
+
+    if not catchup_queue:
+        log.info("Startup catch-up: no missed messages to reply to.")
+        return
+
+    log.info(f"Startup catch-up: {len(catchup_queue)} students need replies. Processing sequentially...")
+
+    for name, cid, msg_id, mock_event in catchup_queue:
+        try:
+            await message_handler.handle_student_message(mock_event, client)
+            # Mark this message as replied so next restart skips it
+            await _set_last_replied_msg_id(cid, msg_id)
+            log.info(f"Startup catch-up: replied to {name} (msg_id={msg_id})")
+        except Exception as e:
+            log.warning(f"Startup catch-up reply failed for {name}: {e}")
 
 
 # ─────────────────────────────────────────────────────────────
@@ -85,10 +231,9 @@ def validate_config():
 async def main():
     validate_config()
 
-    # Initialize database
     await tracker.init_db()
+    await _ensure_reply_tracking_table()
 
-    # Populate students table from config
     for chat_id, info in STUDENTS.items():
         await tracker.upsert_student(
             chat_id=chat_id,
@@ -98,111 +243,50 @@ async def main():
             status=info.get("status", "active"),
         )
 
-    # Create Telethon client (your personal account)
     session_path = str(DATA_DIR / SESSION_NAME)
     client = TelegramClient(session_path, TELEGRAM_API_ID, TELEGRAM_API_HASH)
-
     await client.start()
 
     me = await client.get_me()
     log.info(f"Logged in as: {me.first_name} (@{me.username}), ID: {me.id}")
 
-    # ── STARTUP CATCH-UP & ACTIVITY CHECK ────────────────────
-    # Check for messages sent while the bot was offline.
-    # NOTE: No manual sleep needed here — the global throttle in ai_engine
-    # (_throttled_call, 15s interval) serializes all Groq calls automatically.
-    # 40 students will be processed in ~10 minutes without hitting rate limits.
-    log.info("Running startup catch-up check for all students...")
-    all_db_students = await tracker.get_all_students()
-
-    class MockEvent:
-        def __init__(self, message, chat_id):
-            self.message = message
-            self.chat_id = chat_id
-        async def get_sender(self):
-            return await self.message.get_sender()
-
-    for student in all_db_students:
-        cid = student["chat_id"]
-        try:
-            async for message in client.iter_messages(cid, limit=1):
-                if message.sender_id != me.id:
-                    msg_ts = message.date.astimezone(tracker.ZoneInfo(TIMEZONE))
-                    days_since = (tracker.now_ist() - msg_ts).days
-                    new_status = "active" if days_since < INACTIVE_DAYS_THRESHOLD else "inactive"
-
-                    async with aiosqlite.connect(DB_PATH) as db:
-                        await db.execute(
-                            "UPDATE students SET last_message_at = ?, status = ? WHERE chat_id = ?",
-                            (msg_ts.isoformat(), new_status, cid)
-                        )
-                        await db.commit()
-
-                    # Catch-up reply: only if message is within last 12 hours
-                    if (tracker.now_ist() - msg_ts).total_seconds() < 43200:
-                        log.info(f"Startup catch-up: found missed message from {student['name']}, queuing reply.")
-                        mock_event = MockEvent(message, cid)
-                        # Fire and forget — throttle in ai_engine handles spacing
-                        asyncio.create_task(
-                            message_handler.handle_student_message(mock_event, client)
-                        )
-                break
-
-        except Exception as e:
-            log.warning(f"Could not check activity for {student['name']}: {e}")
-
-    if me.id != YOUR_TELEGRAM_ID:
-        log.warning(
-            f"YOUR_TELEGRAM_ID in config ({YOUR_TELEGRAM_ID}) doesn't match "
-            f"logged-in account ({me.id}). Updating to match."
-        )
+    # Run catch-up before registering event handlers to avoid double-processing
+    await run_startup_catchup(client, me)
 
     # ── EVENT HANDLERS ───────────────────────────────────────
 
-    # 1. Student chat messages
     student_chat_ids = list(STUDENTS.keys())
     if student_chat_ids:
         @client.on(events.NewMessage(chats=student_chat_ids))
         async def on_student_message(event):
-            """Handle incoming messages from student group chats."""
             try:
+                # Mark as replied when a live message comes in
+                await _set_last_replied_msg_id(event.chat_id, event.message.id)
                 await message_handler.handle_student_message(event, client)
             except Exception as e:
                 log.error(f"Error handling student message: {e}", exc_info=True)
 
-    # 2. OPS group messages
     if OPS_GROUP_ID and OPS_GROUP_ID != 0:
         @client.on(events.NewMessage(chats=[OPS_GROUP_ID]))
         async def on_ops_message(event):
-            """Handle incoming messages from Eyeconic OPS Tele group."""
             try:
                 await ops_monitor.handle_ops_message(event, client)
             except Exception as e:
                 log.error(f"Error handling OPS message: {e}", exc_info=True)
 
-    # 3. Saved Messages (your confirmations and commands)
     @client.on(events.NewMessage(outgoing=True))
     async def on_self_message(event):
-        """
-        Handle messages you send to Saved Messages (commands/confirmations).
-        Only processes messages in your private chat (Saved Messages).
-        """
         try:
             if not event.is_private:
                 return
-
             chat = await event.get_chat()
             if not chat or getattr(chat, "id", None) != YOUR_TELEGRAM_ID:
                 return
-
             text = (event.message.text or "").strip()
             if not text:
                 return
-
             log.info(f"Saved Messages command received: {text}")
-            handled = await confirmation.handle_confirmation_reply(event, client)
-            if not handled:
-                pass  # Not a command, ignore
+            await confirmation.handle_confirmation_reply(event, client)
         except Exception as e:
             log.error(f"Error handling self message: {e}", exc_info=True)
 
@@ -212,31 +296,27 @@ async def main():
     scheduler.start()
 
     # ── STARTUP MESSAGE ──────────────────────────────────────
-    student_count = len(STUDENTS)
     active = await tracker.get_active_students()
-
-    startup_msg = (
-        f"Mentor System Online\n\n"
-        f"Logged in as: {me.first_name} (@{me.username})\n"
-        f"Students configured: {student_count}\n"
-        f"Active students: {len(active)}\n"
+    await client.send_message(
+        YOUR_TELEGRAM_ID,
+        f"Mentor System Online\n"
+        f"Students: {len(STUDENTS)} configured, {len(active)} active\n"
         f"OPS group: {'Connected' if OPS_GROUP_ID else 'Not configured'}\n\n"
-        f"Commands (type in Saved Messages):\n"
-        f"  YES / SEND — approve pending check-ins\n"
-        f"  SKIP — skip current check-in window\n"
-        f"  SEND QUIZ — forward quiz link to all students\n"
-        f"  SEND GT — forward GT message to all students\n"
-        f"  SEND ANNOUNCEMENT — forward latest announcement\n"
-        f"  SEND SPECIFIC — forward to targeted students\n"
-        f"  STATUS — view system status"
+        f"Commands: YES | SKIP | SEND QUIZ | SEND GT | SEND ANNOUNCEMENT | SEND SPECIFIC | STATUS"
     )
-
-    await client.send_message(YOUR_TELEGRAM_ID, startup_msg)
     log.info("Mentor System is live and running")
 
-    # Keep running
-    await client.run_until_disconnected()
+    try:
+        await client.run_until_disconnected()
+    finally:
+        release_single_instance_lock()
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    acquire_single_instance_lock()
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        log.info("Stopped by user.")
+    finally:
+        release_single_instance_lock()

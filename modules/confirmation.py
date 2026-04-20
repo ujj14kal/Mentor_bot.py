@@ -5,7 +5,6 @@ and waits indefinitely for approval before sending.
 
 from __future__ import annotations
 
-
 import logging
 import asyncio
 
@@ -16,23 +15,37 @@ log = logging.getLogger(__name__)
 
 # Track which window is currently awaiting confirmation
 _pending_window = None
-_confirmation_event: asyncio.Event | None = None
+# Store loop identity alongside the event to detect stale events
+_confirmation_event = None
+_confirmation_event_loop = None
 
 
 def _get_confirmation_event() -> asyncio.Event:
-    """Lazily initialize the confirmation event in the current loop."""
-    global _confirmation_event
-    if _confirmation_event is None:
+    """
+    Lazily initialize the confirmation event in the CURRENT running loop.
+    Re-creates the event if the loop has changed (e.g. after restart).
+    """
+    global _confirmation_event, _confirmation_event_loop
+
+    try:
+        current_loop = asyncio.get_running_loop()
+    except RuntimeError:
+        current_loop = None
+
+    # Recreate if missing or bound to a different (now-dead) loop
+    if _confirmation_event is None or _confirmation_event_loop is not current_loop:
         _confirmation_event = asyncio.Event()
+        _confirmation_event_loop = current_loop
+
     return _confirmation_event
 
 
-def get_pending_window() -> str | None:
+def get_pending_window():
     """Get the window currently awaiting confirmation."""
     return _pending_window
 
 
-async def request_confirmation(client, window: str, messages: list[dict]):
+async def request_confirmation(client, window: str, messages: list):
     """
     Send a batch preview to Saved Messages and wait for YES.
     messages: list of {"chat_id": int, "name": str, "text": str}
@@ -40,7 +53,8 @@ async def request_confirmation(client, window: str, messages: list[dict]):
     """
     global _pending_window
     _pending_window = window
-    _get_confirmation_event().clear()
+    evt = _get_confirmation_event()
+    evt.clear()
 
     # Build preview
     window_label = {
@@ -54,24 +68,22 @@ async def request_confirmation(client, window: str, messages: list[dict]):
     if window == "morning":
         inactive = await tracker.get_inactive_students()
         if inactive:
-            inactive_summary = f"\n⚠️ {len(inactive)} INACTIVE STUDENTS (7+ days silent):\n"
-            inactive_summary += "\n".join([f"- {s['name']} ({await tracker.days_since_last_message(s['chat_id'])} days)" for s in inactive[:10]])
+            inactive_summary = f"\n{len(inactive)} INACTIVE STUDENTS (7+ days silent):\n"
+            for s in inactive[:10]:
+                days = await tracker.days_since_last_message(s["chat_id"])
+                inactive_summary += f"- {s['name']} ({days} days)\n"
             if len(inactive) > 10:
-                inactive_summary += f"\n...and {len(inactive)-10} more."
-            inactive_summary += "\n"
+                inactive_summary += f"...and {len(inactive) - 10} more.\n"
 
     preview_lines = [
         f"Ready to send {window_label} to {len(messages)} students.\n",
-        inactive_summary
+        inactive_summary,
     ]
     for i, m in enumerate(messages, 1):
         short_text = m["text"][:120] + ("..." if len(m["text"]) > 120 else "")
-        preview_lines.append(f"{i}. {m['name']}: \"{short_text}\"")
+        preview_lines.append(f'{i}. {m["name"]}: "{short_text}"')
 
-    preview_lines.append(
-        f"\nReply YES to send all, SKIP to skip this window."
-    )
-
+    preview_lines.append(f"\nReply YES to send all, SKIP to skip this window.")
     preview = "\n".join(preview_lines)
 
     # Split if too long (Telegram limit ~4096 chars)
@@ -81,12 +93,10 @@ async def request_confirmation(client, window: str, messages: list[dict]):
     log.info(f"Confirmation requested for {window} window ({len(messages)} messages)")
 
     # Wait indefinitely for confirmation
-    # The event is set by handle_confirmation_reply when user responds
-    await _get_confirmation_event().wait()
+    await evt.wait()
 
-    result = _get_confirmation_event().is_set()
     _pending_window = None
-    return result
+    return True  # Event was set — always approved (SKIP sets it too and is handled separately)
 
 
 async def handle_confirmation_reply(event, client):
@@ -100,7 +110,7 @@ async def handle_confirmation_reply(event, client):
     text = (msg.text or msg.message or "").strip().lower()
 
     if not text:
-        return
+        return False
 
     # ── SCHEDULED CHECK-IN CONFIRMATION ──
     if _pending_window and text in ("yes", "send", "y"):
@@ -135,10 +145,7 @@ async def handle_confirmation_reply(event, client):
                 f"Quiz link sent to {sent} students ({failed} failed)."
             )
         else:
-            await client.send_message(
-                YOUR_TELEGRAM_ID,
-                "No quiz link found in recent OPS messages."
-            )
+            await client.send_message(YOUR_TELEGRAM_ID, "No quiz link found in recent OPS messages.")
         return True
 
     if text == "send gt":
@@ -151,10 +158,7 @@ async def handle_confirmation_reply(event, client):
                 f"GT message sent to {sent} students ({failed} failed)."
             )
         else:
-            await client.send_message(
-                YOUR_TELEGRAM_ID,
-                "No GT message found in recent OPS messages."
-            )
+            await client.send_message(YOUR_TELEGRAM_ID, "No GT message found in recent OPS messages.")
         return True
 
     if text == "send announcement":
@@ -169,17 +173,16 @@ async def handle_confirmation_reply(event, client):
                 f"Announcement sent to {sent} students ({failed} failed)."
             )
         else:
-            await client.send_message(
-                YOUR_TELEGRAM_ID,
-                "No pending announcements to send."
-            )
+            await client.send_message(YOUR_TELEGRAM_ID, "No pending announcements to send.")
         return True
 
     if text.startswith("send specific"):
         from modules.ops_monitor import get_ops_context, forward_to_specific_students
         ctx = get_ops_context()
-        specific = [a for a in ctx.get("announcements", [])
-                     if a.get("type") == "student_specific" and a.get("targets")]
+        specific = [
+            a for a in ctx.get("announcements", [])
+            if a.get("type") == "student_specific" and a.get("targets")
+        ]
         if specific:
             latest = specific[-1]
             sent, failed = await forward_to_specific_students(
@@ -190,10 +193,7 @@ async def handle_confirmation_reply(event, client):
                 f"Sent to {sent} targeted students ({failed} failed)."
             )
         else:
-            await client.send_message(
-                YOUR_TELEGRAM_ID,
-                "No pending student-specific messages to send."
-            )
+            await client.send_message(YOUR_TELEGRAM_ID, "No pending student-specific messages to send.")
         return True
 
     # ── STATUS COMMAND ──
@@ -212,7 +212,9 @@ async def handle_confirmation_reply(event, client):
         )
         if inactive:
             status_msg += "\nRecently Inactive:\n"
-            status_msg += "\n".join([f"- {s['name']} ({await tracker.days_since_last_message(s['chat_id'])} days)" for s in inactive[:5]])
+            for s in inactive[:5]:
+                days = await tracker.days_since_last_message(s["chat_id"])
+                status_msg += f"- {s['name']} ({days} days)\n"
 
         await client.send_message(YOUR_TELEGRAM_ID, status_msg)
         return True

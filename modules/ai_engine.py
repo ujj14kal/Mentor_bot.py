@@ -11,6 +11,8 @@ Rate limit strategy:
 - 40 students × 15s = ~10 minutes max queue drain (well within 1 hour SLA)
 """
 
+from __future__ import annotations
+
 import re
 import json
 import base64
@@ -34,9 +36,25 @@ _client = AsyncGroq(api_key=GROQ_API_KEY)
 # 15s between calls = 4/min = safe under 6000 tokens/min limit
 # All 40 students processed in ~10 minutes, well within 1 hour SLA
 # ─────────────────────────────────────────────────────────────
+# Use Optional[asyncio.Lock] for Python 3.9 compatibility (not asyncio.Lock | None)
 _throttle_lock: Optional[asyncio.Lock] = None
 _last_call_time: float = 0.0
 _MIN_INTERVAL: float = 15.0  # seconds between API calls
+
+
+def _get_throttle_lock() -> asyncio.Lock:
+    """Get or create the throttle lock in the current event loop."""
+    global _throttle_lock
+    # Always create a fresh lock if None OR if the existing lock is bound to a dead loop
+    try:
+        if _throttle_lock is None:
+            _throttle_lock = asyncio.Lock()
+        # Test that the lock is usable in the current loop
+        loop = asyncio.get_event_loop()
+        return _throttle_lock
+    except RuntimeError:
+        _throttle_lock = asyncio.Lock()
+        return _throttle_lock
 
 
 async def _throttled_call(func, max_retries: int = 5):
@@ -47,8 +65,23 @@ async def _throttled_call(func, max_retries: int = 5):
     """
     global _last_call_time, _throttle_lock
 
+    # Always reinitialize lock in the current running loop to avoid
+    # "Future attached to a different loop" errors on restart
+    try:
+        running_loop = asyncio.get_running_loop()
+    except RuntimeError:
+        running_loop = None
+
     if _throttle_lock is None:
         _throttle_lock = asyncio.Lock()
+    else:
+        # Check if lock belongs to a different loop (Python 3.9 workaround)
+        try:
+            # Try a non-blocking acquire — if it raises RuntimeError, recreate
+            if hasattr(_throttle_lock, '_loop') and _throttle_lock._loop is not running_loop:
+                _throttle_lock = asyncio.Lock()
+        except Exception:
+            _throttle_lock = asyncio.Lock()
 
     async with _throttle_lock:
         # Enforce minimum gap between calls
@@ -119,33 +152,30 @@ async def classify_message(text: str) -> dict:
     Returns: {"type": str, "needs_reply": bool, "is_planner": bool,
               "is_subject_change": bool, "summary": str}
     """
-    prompt = f'''Analyze this message from a medical student in a Telegram group chat.
-The student is preparing for NEET PG and sends updates about their study work.
-
-Message: "{text}"
-
-Classify it and respond ONLY in this exact JSON format, no other text:
-{{"type": "work_update|doubt|planner_request|subject_change|greeting|acknowledgment|personal|irrelevant|question",
- "needs_reply": true or false,
- "is_planner": true or false,
- "is_subject_change": true or false,
- "summary": "one line summary of what the student said"}}
-
-Rules:
-- "work_update": they shared progress, scores, or completion status. Also includes them telling you their "plan for today" (e.g., "I will do 50 MCQs today"). This is NOT a planner_request.
-- "doubt": they asked a study-related question
-- "planner_request": specifically requests a structural change to their long-term study schedule, changing subject dates, or modifying their overall roadmap.
-- "subject_change": specifically requesting to swap subjects or skip a subject in the roadmap.
-- "greeting": just hi/hello/good morning type messages — needs_reply=true but keep reply brief
-- "acknowledgment": ok/noted/sure/done type — needs_reply=false
-- "personal": personal issues, health, leave — needs_reply=true
-- "irrelevant": random/off-topic — needs_reply=false
-- "question": general questions directed at the mentor
-
-"is_planner" Rule:
-Only set "is_planner": true if the student is asking the mentor to CHANGE their official schedule/dates.
-If they are just sharing their plan for the day, set "is_planner": false.
-'''
+    prompt = (
+        'Analyze this message from a medical student in a Telegram group chat.\n'
+        'The student is preparing for NEET PG and sends updates about their study work.\n\n'
+        f'Message: "{text}"\n\n'
+        'Classify it and respond ONLY in this exact JSON format, no other text:\n'
+        '{"type": "work_update|doubt|planner_request|subject_change|greeting|acknowledgment|personal|irrelevant|question",'
+        ' "needs_reply": true or false,'
+        ' "is_planner": true or false,'
+        ' "is_subject_change": true or false,'
+        ' "summary": "one line summary of what the student said"}\n\n'
+        'Rules:\n'
+        '- "work_update": they shared progress, scores, or completion status. Also includes them telling you their "plan for today". This is NOT a planner_request.\n'
+        '- "doubt": they asked a study-related question\n'
+        '- "planner_request": specifically requests a structural change to their long-term study schedule.\n'
+        '- "subject_change": specifically requesting to swap subjects or skip a subject in the roadmap.\n'
+        '- "greeting": just hi/hello/good morning type messages\n'
+        '- "acknowledgment": ok/noted/sure/done type -- needs_reply=false\n'
+        '- "personal": personal issues, health, leave -- needs_reply=true\n'
+        '- "irrelevant": random/off-topic -- needs_reply=false\n'
+        '- "question": general questions directed at the mentor\n\n'
+        '"is_planner" Rule:\n'
+        'Only set "is_planner": true if the student is asking the mentor to CHANGE their official schedule/dates.\n'
+        'If they are just sharing their plan for the day, set "is_planner": false.\n'
+    )
 
     async def _call():
         resp = await _client.chat.completions.create(
@@ -180,32 +210,30 @@ async def classify_ops_message(text: str) -> dict:
               "target_students": list, "is_quiz_link": bool,
               "is_gt_message": bool, "summary": str}
     """
-    prompt = f'''Analyze this message from the Eyeconic OPS Tele group (admin/support group).
-This group is used by admins to send announcements, quiz links, GT links, and operational updates.
-
-Message: "{text}"
-
-Classify it and respond ONLY in this exact JSON format, no other text:
-{{"type": "quiz_link|gt_message|announcement|schedule_change|student_specific|operational|irrelevant",
- "for_all_students": true or false,
- "target_students": [],
- "is_quiz_link": true or false,
- "is_gt_message": true or false,
- "needs_forwarding": true or false,
- "summary": "one line summary"}}
-
-Rules:
-- "quiz_link": contains a quiz link or quiz-related announcement (usually Thursday night)
-- "gt_message": grand test related message (usually Sunday)
-- "announcement": general announcement for all students
-- "schedule_change": changes to dates, subjects, order
-- "student_specific": mentions specific student names
-- "operational": internal ops discussion, not for students
-- "irrelevant": casual chat, not actionable
-- for_all_students: true if this should be shared with every student
-- target_students: list of student names if message is for specific students only
-- needs_forwarding: true if this message content should be sent to student chats
-'''
+    prompt = (
+        'Analyze this message from the Eyeconic OPS Tele group (admin/support group).\n'
+        'This group is used by admins to send announcements, quiz links, GT links, and operational updates.\n\n'
+        f'Message: "{text}"\n\n'
+        'Classify it and respond ONLY in this exact JSON format, no other text:\n'
+        '{"type": "quiz_link|gt_message|announcement|schedule_change|student_specific|operational|irrelevant",'
+        ' "for_all_students": true or false,'
+        ' "target_students": [],'
+        ' "is_quiz_link": true or false,'
+        ' "is_gt_message": true or false,'
+        ' "needs_forwarding": true or false,'
+        ' "summary": "one line summary"}\n\n'
+        'Rules:\n'
+        '- "quiz_link": contains a quiz link or quiz-related announcement\n'
+        '- "gt_message": grand test related message\n'
+        '- "announcement": general announcement for all students\n'
+        '- "schedule_change": changes to dates, subjects, order\n'
+        '- "student_specific": mentions specific student names\n'
+        '- "operational": internal ops discussion, not for students\n'
+        '- "irrelevant": casual chat, not actionable\n'
+        '- for_all_students: true if this should be shared with every student\n'
+        '- target_students: list of student names if message is for specific students only\n'
+        '- needs_forwarding: true if this message content should be sent to student chats\n'
+    )
 
     async def _call():
         resp = await _client.chat.completions.create(
@@ -244,20 +272,18 @@ async def extract_score_from_image(image_bytes: bytes, caption: str = "") -> dic
     """
     b64 = base64.standard_b64encode(image_bytes).decode()
 
-    prompt = f'''Look at this screenshot from a medical student preparing for NEET PG.
-Caption they wrote: "{caption}"
-
-Identify:
-1. Type: "cm" (custom module score), "gt" (grand test score), "quiz" (weekly quiz score), "mynb" (notebook/handwritten notes photo), "unknown"
-2. Score shown — exact text like "18/20" or "87%"
-3. If correct/total format, calculate percentage = correct/total * 100, round to 1 decimal
-
-Reply ONLY in this JSON, no other text:
-{{"score_type": "cm|gt|quiz|mynb|unknown", "value": "raw score text", "percentage": 0.0}}
-
-For notebook photos (handwritten notes, revision material): set value="present", percentage=100.
-For unclear or unrelated screenshots: score_type="unknown".
-'''
+    prompt = (
+        f'Look at this screenshot from a medical student preparing for NEET PG.\n'
+        f'Caption they wrote: "{caption}"\n\n'
+        'Identify:\n'
+        '1. Type: "cm" (custom module score), "gt" (grand test score), "quiz" (weekly quiz score), "mynb" (notebook/handwritten notes photo), "unknown"\n'
+        '2. Score shown -- exact text like "18/20" or "87%"\n'
+        '3. If correct/total format, calculate percentage = correct/total * 100, round to 1 decimal\n\n'
+        'Reply ONLY in this JSON, no other text:\n'
+        '{"score_type": "cm|gt|quiz|mynb|unknown", "value": "raw score text", "percentage": 0.0}\n\n'
+        'For notebook photos (handwritten notes, revision material): set value="present", percentage=100.\n'
+        'For unclear or unrelated screenshots: score_type="unknown".\n'
+    )
 
     async def _call():
         resp = await _client.chat.completions.create(
