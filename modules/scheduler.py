@@ -169,8 +169,23 @@ async def _run_checkin_window(client, window: str):
         return
 
     messages = []
+    today = tracker.now_ist().strftime("%Y-%m-%d")
     for student in active_students:
         chat_id = student["chat_id"]
+        
+        # Check if we already created a check-in for this student/window today
+        async with tracker.aiosqlite.connect(tracker.DB_PATH) as db:
+            db.row_factory = tracker.aiosqlite.Row
+            cursor = await db.execute(
+                "SELECT id FROM pending_checkins WHERE chat_id = ? AND window = ? AND created_at LIKE ?",
+                (chat_id, window, f"{today}%")
+            )
+            already_exists = await cursor.fetchone()
+        
+        if already_exists:
+            log.debug(f"Skipping generation for {student['name']} — check-in already exists for today.")
+            continue
+
         name = student["name"].split()[0]
         info = STUDENTS.get(chat_id, {})
         batch = info.get("batch", student.get("batch", ""))
@@ -432,28 +447,11 @@ async def check_for_missed_windows(client):
         log.debug(f"Catch-up check: {window_name} window [{start.strftime('%H:%M')} - {end.strftime('%H:%M')}]. Current time: {now.strftime('%H:%M')}")
 
         if start <= now <= end:
-            # Check if we already have pending checkins for this window today
-            # We also check if we already SENT or APPROVED checkins for this window today
-            # to avoid duplicate generation if the bot restarted.
-            pending = await tracker.get_pending_checkins(window_name)
-            approved = await tracker.get_approved_unsent_checkins(window_name)
-            
-            # Use raw query or filter manually to see if ANY checkin was created today for this window
-            # (including those already sent)
-            async with tracker.aiosqlite.connect(tracker.DB_PATH) as db:
-                db.row_factory = tracker.aiosqlite.Row
-                cursor = await db.execute(
-                    "SELECT id FROM pending_checkins WHERE window = ? AND created_at LIKE ?",
-                    (window_name, f"{today}%")
-                )
-                today_exists = await cursor.fetchone()
-
-            if not today_exists:
-                log.info(f"Startup catch-up: Active {window_name} window detected and no check-ins found for today. Triggering now.")
-                asyncio.create_task(_run_checkin_window(client, window_name))
-                return  # Only catch up one window at a time
-            else:
-                log.info(f"Startup catch-up: Active {window_name} window detected, but check-ins for today already exist. Skipping.")
+            # We always trigger the window if we are in it.
+            # _run_checkin_window will handle skipping students who already got their message.
+            log.info(f"Startup catch-up: Active {window_name} window detected. Checking for unsent messages.")
+            asyncio.create_task(_run_checkin_window(client, window_name))
+            return  # Only catch up one window at a time
 
     # ── 11 PM Audit Catch-up (if started between 11 PM and Midnight) ──
     audit_start = now.replace(hour=23, minute=0, second=0, microsecond=0)
