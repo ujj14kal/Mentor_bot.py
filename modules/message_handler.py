@@ -193,11 +193,14 @@ CM submitted today: {cm_done} | Notebook submitted today: {nb_done}
 Recent conversation:
 {history_str}
 
-Reply as their accountability partner. Be specific to what they said.
-If it's a progress update: acknowledge specifically with positive reinforcement, and encourage the next step.
-If it's a doubt about studies: answer clearly, practically, and supportively.
-If they just returned after being silent: welcome them back warmly, acknowledge the gap briefly, and help them get back to the routine with a positive focus.
-If CM or mynb still pending, encourage them to complete it soon so we can finish the day strong.
+Reply as their accountability partner. Be specific to what they said. 
+CRITICAL PERSONALIZATION RULES:
+1. NO GENERIC REPLIES. Never just say "Good job" or "Keep going". 
+2. Reference specific subjects, scores, or comments they made (e.g. if they mentioned 'Pathology', you mention 'Pathology').
+3. If they share a score, acknowledge the specific number and motivate them for the next one.
+4. If they mentioned a personal detail (health, leave, feeling tired), address that first with empathy.
+5. If it's a progress update: acknowledge specifically with positive reinforcement.
+6. If they just returned after being silent: welcome them back warmly and help them get back to the routine.
 Keep it 1-3 lines. Natural, motivational, and positive. No emojis."""
 
     reply = await ai_engine.generate_message(prompt)

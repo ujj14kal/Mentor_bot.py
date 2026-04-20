@@ -292,7 +292,11 @@ def _build_checkin_prompt(window: str, name: str, batch: str, day: str,
     context_header = f"Student: {name} | Batch: {batch} | Day: {day}\nDays silent: {silent_days}\n"
     if history_ctx:
         context_header += f"\nRecent History (Last 48 Hours):\n{history_ctx}\n"
-        context_header += "\nIMPORTANT: If the student mentioned being on leave, sick, or taking an off in the last 48 hours, acknowledge it and do not ask for a work plan. If they just sent a score/update, acknowledge it specifically.\n"
+        context_header += "\nCRITICAL RULES FOR PERSONALIZATION:\n"
+        context_header += "1. DO NOT be generic. Reference specific things the student mentioned in the last 48 hours.\n"
+        context_header += "2. If they mentioned a specific subject (e.g. Anatomy), mention it. If they mentioned a score, acknowledge it.\n"
+        context_header += "3. If they mentioned being sick, on leave, or having a personal issue, START by asking about that. Do not ignore it.\n"
+        context_header += "4. If they just shared a plan, acknowledge that plan specifically.\n"
 
     if window == "morning":
         base = f"""Student: {name} | Batch: {batch} | Day: {day}
