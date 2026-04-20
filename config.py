@@ -92,8 +92,8 @@ STUDENT_STAGGER_MAX = 15
 AUTO_SEND_SCHEDULED = True
 
 # Inactive threshold (days)
-INACTIVE_DAYS_THRESHOLD = 7
-INACTIVE_ESCALATION_DAYS = 14
+INACTIVE_DAYS_THRESHOLD = 4
+INACTIVE_ESCALATION_DAYS = 7
 
 # ─────────────────────────────────────────────────────────────
 # STUDENT ROSTER

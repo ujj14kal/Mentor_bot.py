@@ -87,15 +87,19 @@ Classify it and respond ONLY in this exact JSON format, no other text:
  "summary": "one line summary of what the student said"}}
 
 Rules:
-- "work_update": they shared progress, scores, or completion status
+- "work_update": they shared progress, scores, or completion status. Also includes them telling you their "plan for today" (e.g., "I will do 50 MCQs today"). This is NOT a planner_request.
 - "doubt": they asked a study-related question
-- "planner_request": anything about updating/changing their study planner
-- "subject_change": request to change subject order or schedule dates
+- "planner_request": specifically requests a structural change to their long-term study schedule, changing subject dates, or modifying their overall roadmap.
+- "subject_change": specifically requesting to swap subjects or skip a subject in the roadmap.
 - "greeting": just hi/hello/good morning type messages — needs_reply=true but keep reply brief
 - "acknowledgment": ok/noted/sure/done type — needs_reply=false
 - "personal": personal issues, health, leave — needs_reply=true
 - "irrelevant": random/off-topic — needs_reply=false
 - "question": general questions directed at the mentor
+
+"is_planner" Rule:
+Only set "is_planner": true if the student is asking the mentor to CHANGE their official schedule/dates. 
+If they are just sharing their plan for the day, set "is_planner": false.
 """
 
     async def _call():

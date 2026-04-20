@@ -19,9 +19,13 @@ from pathlib import Path
 from telethon import TelegramClient, events
 from telethon.tl.types import PeerUser
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from config import (
     TELEGRAM_API_ID, TELEGRAM_API_HASH, SESSION_NAME,
     YOUR_TELEGRAM_ID, OPS_GROUP_ID, STUDENTS, TIMEZONE, DATA_DIR,
+    INACTIVE_DAYS_THRESHOLD
 )
 from modules import student_tracker as tracker
 from modules import message_handler
@@ -112,25 +116,54 @@ async def main():
         # Only check if last_message_at is missing OR if we want to be thorough
         # For now, let's check everyone to ensure perfect mapping
         try:
-            # Get the very last message from this chat
-            async for message in client.iter_messages(cid, limit=1):
-                # If the message is from the student (not from the bot/Shraddha)
-                # we update the last_message_at timestamp
+            # Get the latest message from the student (not the bot)
+            found = False
+            async for message in client.iter_messages(cid, limit=20):
                 if message.sender_id != me.id:
+                    found = True
                     msg_ts = message.date.astimezone(tracker.ZoneInfo(TIMEZONE))
+                    days_since = (tracker.now_ist() - msg_ts).days
                     
-                    # Update DB if this message is newer than what we have
+                    new_status = "active"
+                    if days_since >= INACTIVE_DAYS_THRESHOLD:
+                        new_status = "inactive"
+
+                    # Update DB if this message is newer than what we have or if we are correcting status
                     current_last = student.get("last_message_at")
-                    if not current_last or msg_ts.isoformat() > current_last:
+                    if not current_last or msg_ts.isoformat() > current_last or student.get("status") != new_status:
                         import aiosqlite
                         from config import DB_PATH
                         async with aiosqlite.connect(DB_PATH) as db:
                             await db.execute(
-                                "UPDATE students SET last_message_at = ?, status = 'active' WHERE chat_id = ?",
-                                (msg_ts.isoformat(), cid)
+                                "UPDATE students SET last_message_at = ?, status = ? WHERE chat_id = ?",
+                                (msg_ts.isoformat(), new_status, cid)
                             )
                             await db.commit()
-                        log.info(f"Startup catch-up: Updated activity for {student['name']} ({msg_ts.strftime('%Y-%m-%d %H:%M')})")
+                        log.info(f"Startup catch-up: Updated {student['name']} to {new_status} (Last: {msg_ts.strftime('%Y-%m-%d %H:%M')})")
+                    break # Found the latest student message, move to next student
+            
+            if not found:
+                # No student message found in history. 
+                # If they were created more than X days ago, mark as inactive.
+                created_at = student.get("created_at")
+                if created_at:
+                    try:
+                        if " " in created_at and "T" not in created_at:
+                            created_at = created_at.replace(" ", "T")
+                        created_dt = datetime.fromisoformat(created_at).replace(tzinfo=ZoneInfo(TIMEZONE))
+                        if (tracker.now_ist() - created_dt).days >= INACTIVE_DAYS_THRESHOLD:
+                            if student.get("status") != "inactive":
+                                import aiosqlite
+                                from config import DB_PATH
+                                async with aiosqlite.connect(DB_PATH) as db:
+                                    await db.execute(
+                                        "UPDATE students SET status = 'inactive' WHERE chat_id = ?",
+                                        (cid,)
+                                    )
+                                    await db.commit()
+                                log.info(f"Startup catch-up: {student['name']} marked inactive (No messages found, account old)")
+                    except Exception:
+                        pass
         except Exception as e:
             log.warning(f"Could not check activity for {student['name']}: {e}")
 

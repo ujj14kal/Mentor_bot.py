@@ -218,6 +218,7 @@ async def _run_checkin_window(client, window: str):
     from config import AUTO_SEND_SCHEDULED, YOUR_TELEGRAM_ID
     if AUTO_SEND_SCHEDULED:
         log.info(f"Auto-send enabled. Sending {window} check-ins immediately.")
+        await tracker.approve_checkins(window)
         approved = True
         # Still notify Saved Messages that we are sending
         await client.send_message(YOUR_TELEGRAM_ID, f"🚀 Auto-sending {len(messages)} {window} check-ins now.")

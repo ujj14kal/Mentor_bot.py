@@ -582,3 +582,541 @@ Bhargav: call slo...
 2026-04-20 07:30:51,352 | INFO    | mentor_system        | Mentor System is live and running
 2026-04-20 07:31:45,569 | INFO    | mentor_system        | Saved Messages command received: Yes
 2026-04-20 07:31:45,569 | INFO    | mentor_system        | Saved Messages command received: Yes
+2026-04-20 07:32:06,974 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:32:06,974 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:32:12,442 | INFO    | mentor_system        | Saved Messages command received: YES
+2026-04-20 07:32:12,442 | INFO    | mentor_system        | Saved Messages command received: YES
+2026-04-20 07:32:29,438 | INFO    | modules.ops_monitor  | OPS message from Eyeconic Ops CM 2 (@CM2eyeconicops): @Eyeconicdeb , update the sheet...
+2026-04-20 07:32:29,438 | INFO    | modules.ops_monitor  | OPS message from Eyeconic Ops CM 2 (@CM2eyeconicops): @Eyeconicdeb , update the sheet...
+2026-04-20 07:32:29,781 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:32:29,781 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:32:29,810 | INFO    | modules.ops_monitor  | Operational OPS message logged: @Eyeconicdeb , update the sheet
+2026-04-20 07:32:29,810 | INFO    | modules.ops_monitor  | Operational OPS message logged: @Eyeconicdeb , update the sheet
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 07:34:42,645 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:34:42,645 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:34:45,272 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:34:45,272 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:34:45,273 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:34:45,273 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:34:57,383 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:34:57,383 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:34:57,385 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:34:57,385 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:34:57,390 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected and no check-ins found for today. Triggering now.
+2026-04-20 07:34:57,390 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected and no check-ins found for today. Triggering now.
+2026-04-20 07:34:57,390 | INFO    | modules.scheduler    | Starting morning check-in window (Monday)
+2026-04-20 07:34:57,390 | INFO    | modules.scheduler    | Starting morning check-in window (Monday)
+2026-04-20 07:34:57,390 | INFO    | modules.ops_monitor  | Running morning OPS group check...
+2026-04-20 07:34:57,390 | INFO    | modules.ops_monitor  | Running morning OPS group check...
+2026-04-20 07:34:58,375 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:34:58,375 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:34:58,399 | INFO    | modules.ops_monitor  | Morning OPS check: reviewed 14 recent messages
+2026-04-20 07:34:58,399 | INFO    | modules.ops_monitor  | Morning OPS check: reviewed 14 recent messages
+2026-04-20 07:34:59,172 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:34:59,172 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:34:59,522 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:34:59,522 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:34:59,946 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:34:59,946 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:00,238 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:00,238 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:00,556 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:00,556 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:00,945 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:00,945 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:01,306 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:01,306 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:01,620 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:01,620 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:01,967 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:01,967 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:02,349 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:02,349 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:02,640 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:02,640 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:03,007 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:03,007 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:03,743 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:03,743 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:04,131 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:04,131 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:04,633 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:04,633 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:05,144 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:05,144 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:05,628 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:05,628 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:05,962 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:05,962 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:06,288 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:06,288 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:06,710 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:06,710 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:06,763 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:06,763 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:06,764 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+2026-04-20 07:35:06,764 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+2026-04-20 07:35:08,251 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:08,251 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:08,305 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:08,305 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:08,306 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:08,306 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:11,695 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:11,695 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:11,749 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:11,749 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:11,751 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:11,751 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:14,261 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:14,261 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:14,315 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:14,315 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:14,316 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:14,316 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:17,724 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:17,724 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:17,778 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:17,778 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:17,779 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:17,779 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:20,163 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:20,163 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:20,216 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:20,216 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:20,217 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:20,217 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:23,541 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:23,541 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:23,596 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:23,596 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:23,597 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:23,597 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:27,158 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:27,158 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:27,213 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:27,213 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:27,214 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:27,214 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:29,513 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:29,513 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:29,570 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:29,570 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:29,571 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:29,571 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:33,200 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:33,200 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:33,255 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:33,255 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:33,256 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:33,256 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:35,549 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:35,549 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:35,606 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:35,606 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:35,607 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:35,607 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:38,935 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:38,935 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:38,992 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:38,992 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:38,993 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:38,993 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:41,350 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:41,350 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:41,493 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:41,493 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:41,495 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:41,495 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:44,945 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:44,945 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:45,001 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:45,001 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:45,004 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:45,004 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:47,448 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:47,448 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:47,571 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:47,571 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:47,572 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:47,572 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:50,998 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:50,998 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:51,055 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:51,055 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:51,056 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:51,056 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:53,578 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:53,578 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:53,632 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:53,632 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:53,633 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:53,633 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:35:57,061 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:57,061 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:35:57,116 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:57,116 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:57,118 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:57,118 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:35:59,165 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:59,165 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:35:59,166 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+2026-04-20 07:35:59,166 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+2026-04-20 07:36:00,540 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:00,540 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:00,677 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:36:00,677 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:36:00,679 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:36:00,679 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:36:03,202 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:03,202 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:03,337 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:36:03,337 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:36:03,338 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:36:03,338 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:36:05,763 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:05,763 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:05,770 | INFO    | modules.scheduler    | Auto-send enabled. Sending morning check-ins immediately.
+2026-04-20 07:36:05,770 | INFO    | modules.scheduler    | Auto-send enabled. Sending morning check-ins immediately.
+2026-04-20 07:36:06,332 | INFO    | modules.scheduler    | morning check-ins complete: 0/0
+2026-04-20 07:36:06,332 | INFO    | modules.scheduler    | morning check-ins complete: 0/0
+2026-04-20 07:36:47,058 | INFO    | modules.ops_monitor  | OPS message from Eyeconic Ops CM 2 (@CM2eyeconicops): @Sakshieyeconic @SaniddhyaEyeconic @EyeconicSonakshi @swastikaeyeconic update sheet...
+2026-04-20 07:36:47,058 | INFO    | modules.ops_monitor  | OPS message from Eyeconic Ops CM 2 (@CM2eyeconicops): @Sakshieyeconic @SaniddhyaEyeconic @EyeconicSonakshi @swastikaeyeconic update sheet...
+2026-04-20 07:36:47,398 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:47,398 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:36:47,405 | INFO    | modules.ops_monitor  | Operational OPS message logged: @Sakshieyeconic @SaniddhyaEyeconic @EyeconicSonakshi @swastikaeyeconic update sh
+2026-04-20 07:36:47,405 | INFO    | modules.ops_monitor  | Operational OPS message logged: @Sakshieyeconic @SaniddhyaEyeconic @EyeconicSonakshi @swastikaeyeconic update sh
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 07:38:07,372 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:38:07,372 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:38:09,438 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:38:09,438 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:38:09,439 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:38:09,439 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:38:23,682 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:38:23,682 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:38:23,685 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:38:23,685 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:38:23,691 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected and no check-ins found for today. Triggering now.
+2026-04-20 07:38:23,691 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected and no check-ins found for today. Triggering now.
+2026-04-20 07:38:23,691 | INFO    | modules.scheduler    | Starting morning check-in window (Monday)
+2026-04-20 07:38:23,691 | INFO    | modules.scheduler    | Starting morning check-in window (Monday)
+2026-04-20 07:38:23,691 | INFO    | modules.ops_monitor  | Running morning OPS group check...
+2026-04-20 07:38:23,691 | INFO    | modules.ops_monitor  | Running morning OPS group check...
+2026-04-20 07:38:23,963 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:38:23,963 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:38:23,990 | INFO    | modules.ops_monitor  | Morning OPS check: reviewed 14 recent messages
+2026-04-20 07:38:23,990 | INFO    | modules.ops_monitor  | Morning OPS check: reviewed 14 recent messages
+2026-04-20 07:38:24,861 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:24,861 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:25,644 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:25,644 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:26,054 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:26,054 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:26,432 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:26,432 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:26,975 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:26,975 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:27,383 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:27,383 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:27,792 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:27,792 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:28,111 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:28,111 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:28,614 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:28,614 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:29,124 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:29,124 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:29,840 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:29,840 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:30,356 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:30,356 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:30,864 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:30,864 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:31,203 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:31,203 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:31,473 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:31,473 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:32,199 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:32,199 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:32,558 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:32,558 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:33,003 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:33,003 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:33,342 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:33,342 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:33,653 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:33,653 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:34,014 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:34,014 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:34,340 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:34,340 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:34,820 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:34,820 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:34,884 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:34,884 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:34,885 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:34,885 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:38,262 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:38,262 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:38,318 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:38,318 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:38,320 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:38,320 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:41,822 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:41,822 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:41,881 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:41,881 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:41,883 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:41,883 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:44,279 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:44,279 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:44,338 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:44,338 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:44,339 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:44,339 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:47,797 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:47,797 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:47,928 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:47,928 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:47,929 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:47,929 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:50,550 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:50,550 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:50,606 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:50,606 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:50,608 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:50,608 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:52,998 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:52,998 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:53,061 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:53,061 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:53,062 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:53,062 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:56,842 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:56,842 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:56,898 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:56,898 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:56,899 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:56,899 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:38:59,231 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:59,231 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:38:59,287 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:59,287 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:38:59,288 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:38:59,288 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:39:02,700 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:02,700 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:02,758 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:02,758 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:02,759 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:02,759 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:05,412 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:05,412 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:05,752 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:05,752 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:05,753 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:05,753 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:08,196 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:08,196 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:08,256 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:08,256 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:08,258 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:39:08,258 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:39:11,574 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:11,574 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:11,628 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:11,628 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:11,629 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:39:11,629 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:39:15,192 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:15,192 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:15,252 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:15,252 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:15,253 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:15,253 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:17,700 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:17,700 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:17,813 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:17,813 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:17,815 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:17,815 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:20,324 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:20,324 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:20,468 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:20,468 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:20,469 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:39:20,469 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2026-04-20 07:39:23,909 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:23,909 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:24,106 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:24,106 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-20 07:39:24,108 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:24,108 | INFO    | groq._base_client    | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2026-04-20 07:39:26,571 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:26,571 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:39:26,577 | INFO    | modules.scheduler    | Auto-send enabled. Sending morning check-ins immediately.
+2026-04-20 07:39:26,577 | INFO    | modules.scheduler    | Auto-send enabled. Sending morning check-ins immediately.
+2026-04-20 07:40:57,252 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:40:57,252 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:40:57,255 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:40:57,255 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:40:57,260 | INFO    | modules.student_tracker | Flag added: [planner] Noel Mondal: Gd morning, I will start with the cm and mynb review, then I will cover the revi
+2026-04-20 07:40:57,260 | INFO    | modules.student_tracker | Flag added: [planner] Noel Mondal: Gd morning, I will start with the cm and mynb review, then I will cover the revi
+2026-04-20 07:40:59,555 | INFO    | modules.message_handler | Reply to -1003849522671 scheduled in 125s (2m 5s): Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:40:59,555 | INFO    | modules.message_handler | Reply to -1003849522671 scheduled in 125s (2m 5s): Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:42:31,712 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:42:31,712 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:42:31,714 | INFO    | modules.message_handler | Message from Noel classified as: acknowledgment (reply: False)
+2026-04-20 07:42:31,714 | INFO    | modules.message_handler | Message from Noel classified as: acknowledgment (reply: False)
+2026-04-20 07:42:31,715 | INFO    | modules.message_handler | No reply needed for message from Noel: acknowledgment
+2026-04-20 07:42:31,715 | INFO    | modules.message_handler | No reply needed for message from Noel: acknowledgment
+2026-04-20 07:43:04,276 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:43:04,276 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:43:04,278 | INFO    | modules.message_handler | Message from Piyush classified as: work_update (reply: False)
+2026-04-20 07:43:04,278 | INFO    | modules.message_handler | Message from Piyush classified as: work_update (reply: False)
+2026-04-20 07:43:04,278 | INFO    | modules.message_handler | No reply needed for message from Piyush: work_update
+2026-04-20 07:43:04,278 | INFO    | modules.message_handler | No reply needed for message from Piyush: work_update
+2026-04-20 07:43:24,003 | INFO    | modules.message_handler | Delayed reply sent to -1003849522671: Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:43:24,003 | INFO    | modules.message_handler | Delayed reply sent to -1003849522671: Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:43:53,286 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:43:53,286 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:43:53,289 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:43:53,289 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:43:53,293 | INFO    | modules.student_tracker | Flag added: [planner] Noel Mondal: I have divided the day like - 2 hours for cm+mynb review, 3 hours - for backlog,
+2026-04-20 07:43:53,293 | INFO    | modules.student_tracker | Flag added: [planner] Noel Mondal: I have divided the day like - 2 hours for cm+mynb review, 3 hours - for backlog,
+2026-04-20 07:43:53,567 | INFO    | modules.message_handler | Reply to -1003849522671 scheduled in 161s (2m 41s): Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:43:53,567 | INFO    | modules.message_handler | Reply to -1003849522671 scheduled in 161s (2m 41s): Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:46:01,748 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:46:01,748 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:46:01,751 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:46:01,751 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:46:01,756 | INFO    | modules.student_tracker | Flag added: [planner] Noel Mondal: For this week Saturday only can the task include just 2 hours of physio revision
+2026-04-20 07:46:01,756 | INFO    | modules.student_tracker | Flag added: [planner] Noel Mondal: For this week Saturday only can the task include just 2 hours of physio revision
+2026-04-20 07:46:02,039 | INFO    | modules.message_handler | Reply to -1003849522671 scheduled in 142s (2m 22s): Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:46:02,039 | INFO    | modules.message_handler | Reply to -1003849522671 scheduled in 142s (2m 22s): Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:46:23,006 | INFO    | modules.scheduler    | morning check-ins complete: 40/40
+2026-04-20 07:46:23,006 | INFO    | modules.scheduler    | morning check-ins complete: 40/40
+2026-04-20 07:46:29,896 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:46:29,896 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:46:29,899 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:46:29,899 | INFO    | modules.message_handler | Message from Noel classified as: work_update (reply: False)
+2026-04-20 07:46:29,899 | INFO    | modules.message_handler | No reply needed for message from Noel: work_update
+2026-04-20 07:46:29,899 | INFO    | modules.message_handler | No reply needed for message from Noel: work_update
+2026-04-20 07:46:47,637 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:46:47,637 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:46:53,997 | INFO    | modules.message_handler | Delayed reply sent to -1003849522671: Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:46:53,997 | INFO    | modules.message_handler | Delayed reply sent to -1003849522671: Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:47:14,477 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:47:14,477 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:47:14,480 | INFO    | modules.message_handler | Message from Noel classified as: acknowledgment (reply: False)
+2026-04-20 07:47:14,480 | INFO    | modules.message_handler | Message from Noel classified as: acknowledgment (reply: False)
+2026-04-20 07:47:14,480 | INFO    | modules.message_handler | No reply needed for message from Noel: acknowledgment
+2026-04-20 07:47:14,480 | INFO    | modules.message_handler | No reply needed for message from Noel: acknowledgment
+2026-04-20 07:48:54,041 | INFO    | modules.message_handler | Delayed reply sent to -1003849522671: Noted, Noel. I will look into this and update your planner....
+2026-04-20 07:48:54,041 | INFO    | modules.message_handler | Delayed reply sent to -1003849522671: Noted, Noel. I will look into this and update your planner....
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 07:49:19,599 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:49:19,599 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:49:21,079 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:49:21,079 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:49:21,080 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:49:21,080 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:49:29,767 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:49:29,767 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:49:29,769 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:49:29,769 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:49:29,774 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected, but check-ins for today already exist. Skipping.
+2026-04-20 07:49:29,774 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected, but check-ins for today already exist. Skipping.
+2026-04-20 07:49:29,976 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:49:29,976 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:50:26,037 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:50:26,037 | INFO    | mentor_system        | Saved Messages command received: Status
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ujjwalkalra14/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-04-20 07:51:12,789 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:51:12,789 | INFO    | modules.student_tracker | Database initialized
+2026-04-20 07:51:14,454 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:51:14,454 | INFO    | mentor_system        | Logged in as: Eyeconic (@EyeconicShraddha), ID: 8322365301
+2026-04-20 07:51:14,455 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:51:14,455 | INFO    | mentor_system        | Running startup activity check for all students...
+2026-04-20 07:51:15,378 | INFO    | mentor_system        | Startup catch-up: Updated Dhvani Parmar to inactive (Last: 2026-04-04 14:04)
+2026-04-20 07:51:15,378 | INFO    | mentor_system        | Startup catch-up: Updated Dhvani Parmar to inactive (Last: 2026-04-04 14:04)
+2026-04-20 07:51:15,895 | INFO    | mentor_system        | Startup catch-up: Updated Mahesh Vind to active (Last: 2026-04-19 10:28)
+2026-04-20 07:51:15,895 | INFO    | mentor_system        | Startup catch-up: Updated Mahesh Vind to active (Last: 2026-04-19 10:28)
+2026-04-20 07:51:16,787 | INFO    | mentor_system        | Startup catch-up: Updated Kush Vyas to inactive (Last: 2026-04-02 16:10)
+2026-04-20 07:51:16,787 | INFO    | mentor_system        | Startup catch-up: Updated Kush Vyas to inactive (Last: 2026-04-02 16:10)
+2026-04-20 07:51:17,292 | INFO    | mentor_system        | Startup catch-up: Updated Abhishek Soni to active (Last: 2026-04-18 17:19)
+2026-04-20 07:51:17,292 | INFO    | mentor_system        | Startup catch-up: Updated Abhishek Soni to active (Last: 2026-04-18 17:19)
+2026-04-20 07:51:17,754 | INFO    | mentor_system        | Startup catch-up: Updated Tuba Ansari to active (Last: 2026-04-18 15:12)
+2026-04-20 07:51:17,754 | INFO    | mentor_system        | Startup catch-up: Updated Tuba Ansari to active (Last: 2026-04-18 15:12)
+2026-04-20 07:51:17,989 | INFO    | mentor_system        | Startup catch-up: Updated Rakesh Swain to inactive (Last: 2026-04-10 17:32)
+2026-04-20 07:51:17,989 | INFO    | mentor_system        | Startup catch-up: Updated Rakesh Swain to inactive (Last: 2026-04-10 17:32)
+2026-04-20 07:51:18,197 | INFO    | mentor_system        | Startup catch-up: Updated Aditya Butle to active (Last: 2026-04-18 23:05)
+2026-04-20 07:51:18,197 | INFO    | mentor_system        | Startup catch-up: Updated Aditya Butle to active (Last: 2026-04-18 23:05)
+2026-04-20 07:51:18,688 | INFO    | mentor_system        | Startup catch-up: Updated Nishchith to active (Last: 2026-04-17 20:52)
+2026-04-20 07:51:18,688 | INFO    | mentor_system        | Startup catch-up: Updated Nishchith to active (Last: 2026-04-17 20:52)
+2026-04-20 07:51:18,979 | INFO    | mentor_system        | Startup catch-up: Updated Namrata Bag to active (Last: 2026-04-18 16:08)
+2026-04-20 07:51:18,979 | INFO    | mentor_system        | Startup catch-up: Updated Namrata Bag to active (Last: 2026-04-18 16:08)
+2026-04-20 07:51:19,198 | INFO    | mentor_system        | Startup catch-up: Updated Pruthviraj Parmar to active (Last: 2026-04-18 16:05)
+2026-04-20 07:51:19,198 | INFO    | mentor_system        | Startup catch-up: Updated Pruthviraj Parmar to active (Last: 2026-04-18 16:05)
+2026-04-20 07:51:20,027 | INFO    | mentor_system        | Startup catch-up: Updated Rajnish Pandey to active (Last: 2026-04-18 23:08)
+2026-04-20 07:51:20,027 | INFO    | mentor_system        | Startup catch-up: Updated Rajnish Pandey to active (Last: 2026-04-18 23:08)
+2026-04-20 07:51:20,250 | INFO    | mentor_system        | Startup catch-up: Updated Mitali Mittal to inactive (Last: 2026-04-14 09:48)
+2026-04-20 07:51:20,250 | INFO    | mentor_system        | Startup catch-up: Updated Mitali Mittal to inactive (Last: 2026-04-14 09:48)
+2026-04-20 07:51:21,415 | INFO    | mentor_system        | Startup catch-up: Updated Sravya G to inactive (Last: 2026-04-15 16:40)
+2026-04-20 07:51:21,415 | INFO    | mentor_system        | Startup catch-up: Updated Sravya G to inactive (Last: 2026-04-15 16:40)
+2026-04-20 07:51:21,655 | INFO    | mentor_system        | Startup catch-up: Updated Elakkiya to inactive (Last: 2026-04-11 10:55)
+2026-04-20 07:51:21,655 | INFO    | mentor_system        | Startup catch-up: Updated Elakkiya to inactive (Last: 2026-04-11 10:55)
+2026-04-20 07:51:21,880 | INFO    | mentor_system        | Startup catch-up: Updated Rohit N Nikhade to active (Last: 2026-04-18 17:33)
+2026-04-20 07:51:21,880 | INFO    | mentor_system        | Startup catch-up: Updated Rohit N Nikhade to active (Last: 2026-04-18 17:33)
+2026-04-20 07:51:22,124 | INFO    | mentor_system        | Startup catch-up: Updated Vikas Detwani to active (Last: 2026-04-17 15:46)
+2026-04-20 07:51:22,124 | INFO    | mentor_system        | Startup catch-up: Updated Vikas Detwani to active (Last: 2026-04-17 15:46)
+2026-04-20 07:51:22,558 | INFO    | mentor_system        | Startup catch-up: Updated Vishal Bandi to active (Last: 2026-04-16 10:22)
+2026-04-20 07:51:22,558 | INFO    | mentor_system        | Startup catch-up: Updated Vishal Bandi to active (Last: 2026-04-16 10:22)
+2026-04-20 07:51:22,877 | INFO    | mentor_system        | Startup catch-up: Updated Payal Rani to active (Last: 2026-04-18 15:24)
+2026-04-20 07:51:22,877 | INFO    | mentor_system        | Startup catch-up: Updated Payal Rani to active (Last: 2026-04-18 15:24)
+2026-04-20 07:51:23,172 | INFO    | mentor_system        | Startup catch-up: Updated Pranjal Pareek to active (Last: 2026-04-17 12:07)
+2026-04-20 07:51:23,172 | INFO    | mentor_system        | Startup catch-up: Updated Pranjal Pareek to active (Last: 2026-04-17 12:07)
+2026-04-20 07:51:23,695 | INFO    | mentor_system        | Startup catch-up: Updated Aditya Mittal to inactive (Last: 2026-04-07 13:53)
+2026-04-20 07:51:23,695 | INFO    | mentor_system        | Startup catch-up: Updated Aditya Mittal to inactive (Last: 2026-04-07 13:53)
+2026-04-20 07:51:23,938 | INFO    | mentor_system        | Startup catch-up: Updated ISHU to inactive (Last: 2026-04-02 16:13)
+2026-04-20 07:51:23,938 | INFO    | mentor_system        | Startup catch-up: Updated ISHU to inactive (Last: 2026-04-02 16:13)
+2026-04-20 07:51:24,217 | INFO    | mentor_system        | Startup catch-up: Updated Sahithi Gandham to active (Last: 2026-04-18 21:35)
+2026-04-20 07:51:24,217 | INFO    | mentor_system        | Startup catch-up: Updated Sahithi Gandham to active (Last: 2026-04-18 21:35)
+2026-04-20 07:51:24,434 | INFO    | mentor_system        | Startup catch-up: Updated Pooja to active (Last: 2026-04-17 12:05)
+2026-04-20 07:51:24,434 | INFO    | mentor_system        | Startup catch-up: Updated Pooja to active (Last: 2026-04-17 12:05)
+2026-04-20 07:51:24,440 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:51:24,440 | INFO    | modules.scheduler    | All scheduled jobs registered
+2026-04-20 07:51:24,442 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:51:24,442 | INFO    | modules.scheduler    | Running startup catch-up check...
+2026-04-20 07:51:24,447 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected, but check-ins for today already exist. Skipping.
+2026-04-20 07:51:24,447 | INFO    | modules.scheduler    | Startup catch-up: Active morning window detected, but check-ins for today already exist. Skipping.
+2026-04-20 07:51:24,640 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:51:24,640 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 07:51:52,343 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:51:52,343 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:52:20,584 | INFO    | mentor_system        | Saved Messages command received: Yes
+2026-04-20 07:52:20,584 | INFO    | mentor_system        | Saved Messages command received: Yes
+2026-04-20 07:52:33,414 | INFO    | mentor_system        | Saved Messages command received: Send
+2026-04-20 07:52:33,414 | INFO    | mentor_system        | Saved Messages command received: Send
