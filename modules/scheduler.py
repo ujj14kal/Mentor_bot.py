@@ -214,8 +214,16 @@ async def _run_checkin_window(client, window: str):
         log.warning(f"No messages generated for {window} window")
         return
 
-    # Step 3: Send preview and wait for confirmation
-    approved = await confirmation.request_confirmation(client, window, messages)
+    # Step 3: Confirmation via Saved Messages (if enabled)
+    from config import AUTO_SEND_SCHEDULED, YOUR_TELEGRAM_ID
+    if AUTO_SEND_SCHEDULED:
+        log.info(f"Auto-send enabled. Sending {window} check-ins immediately.")
+        approved = True
+        # Still notify Saved Messages that we are sending
+        await client.send_message(YOUR_TELEGRAM_ID, f"🚀 Auto-sending {len(messages)} {window} check-ins now.")
+    else:
+        from modules import confirmation
+        approved = await confirmation.request_confirmation(client, window, messages)
 
     if not approved:
         log.info(f"{window} check-ins skipped by user")

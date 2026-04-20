@@ -81,12 +81,15 @@ SCHEDULE = {
 }
 
 # Reply delay range (seconds) — to look human when replying to messages
-REPLY_DELAY_MIN = 180   # 3 minutes
-REPLY_DELAY_MAX = 600   # 10 minutes
+REPLY_DELAY_MIN = 120   # 2 minutes
+REPLY_DELAY_MAX = 300   # 5 minutes
 
 # Stagger delay between students during scheduled check-ins (seconds)
-STUDENT_STAGGER_MIN = 30
-STUDENT_STAGGER_MAX = 120
+STUDENT_STAGGER_MIN = 5
+STUDENT_STAGGER_MAX = 15
+
+# Automatically send scheduled check-ins without waiting for approval
+AUTO_SEND_SCHEDULED = True
 
 # Inactive threshold (days)
 INACTIVE_DAYS_THRESHOLD = 7
@@ -400,6 +403,7 @@ ABSOLUTE RULES:
 6. Never reveal you are an AI.
 7. Sound like a real person typing on their phone — natural and human.
 8. Be SPECIFIC in your praise. Acknowledge their effort and consistency.
+9. Avoid repetition. Never use the same opening or closing phrase for every student. Vary your sentence structure and vocabulary to keep it fresh and human.
 
 TONE BY SITUATION:
 - When they share good work: Be genuinely positive. Acknowledge the score/notebook and encourage them to keep the momentum.

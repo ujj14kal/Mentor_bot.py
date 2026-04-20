@@ -546,3 +546,17 @@ RuntimeError: Task <Task pending name='Task-13' coro=<_run_checkin_window() runn
 2026-04-20 07:21:15,710 | INFO    | modules.ops_monitor  | OPS message from Eyeconic Ops CM 2 (@CM2eyeconicops): @Eyeconicsupport check debajit sarkar, to be onboarded student....
 2026-04-20 07:21:16,211 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-04-20 07:21:16,211 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:28:56,279 | INFO    | modules.ops_monitor  | OPS message from Eyeconic Ops CM 2 (@CM2eyeconicops): Amanpreet singh: cct 3 shared
+Mohanpriya: call slot booked for today 12:30-1:00 pm
+Bhargav: call slo...
+2026-04-20 07:28:56,279 | INFO    | modules.ops_monitor  | OPS message from Eyeconic Ops CM 2 (@CM2eyeconicops): Amanpreet singh: cct 3 shared
+Mohanpriya: call slot booked for today 12:30-1:00 pm
+Bhargav: call slo...
+2026-04-20 07:28:56,698 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:28:56,698 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:29:05,822 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:29:05,822 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-20 07:29:05,825 | INFO    | modules.message_handler | Message from Kshitij classified as: work_update (reply: False)
+2026-04-20 07:29:05,825 | INFO    | modules.message_handler | Message from Kshitij classified as: work_update (reply: False)
+2026-04-20 07:29:05,825 | INFO    | modules.message_handler | No reply needed for message from Kshitij: work_update
+2026-04-20 07:29:05,825 | INFO    | modules.message_handler | No reply needed for message from Kshitij: work_update

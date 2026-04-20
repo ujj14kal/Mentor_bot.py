@@ -298,7 +298,7 @@ async def _handle_photo(event, client, msg, chat_id, student_info, name,
 
 async def _schedule_delayed_reply(client, chat_id: int, trigger: str, reply_text: str):
     """
-    Schedule a reply to be sent after a random human-like delay (3-10 minutes).
+    Schedule a reply to be sent after a random human-like delay (120-300 seconds).
     The reply is queued in the database and sent by the reply dispatcher.
     """
     if not reply_text:
