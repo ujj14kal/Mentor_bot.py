@@ -46,6 +46,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client, "morning"],
         id="checkin_morning",
         name="Morning Check-in",
+        misfire_grace_time=3600,
     )
 
     # ── Afternoon check-in ──
@@ -58,6 +59,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client, "afternoon"],
         id="checkin_afternoon",
         name="Afternoon Check-in",
+        misfire_grace_time=3600,
     )
 
     # ── Evening check-in ──
@@ -70,6 +72,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client, "evening"],
         id="checkin_evening",
         name="Evening Check-in",
+        misfire_grace_time=3600,
     )
 
     # ── Pending reply dispatcher (every 30 seconds) ──
@@ -80,6 +83,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client],
         id="reply_dispatch",
         name="Reply Dispatcher",
+        misfire_grace_time=60,
     )
 
     # ── 11 PM daily audit (sheets + attendance) ──
@@ -91,6 +95,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client],
         id="daily_audit",
         name="11 PM Daily Audit",
+        misfire_grace_time=3600,
     )
 
     # ── 6:50 AM Inactive check (Moved from 10 PM) ──
@@ -102,6 +107,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client],
         id="inactive_check",
         name="Inactive Student Check",
+        misfire_grace_time=3600,
     )
 
     # ── 11:15 PM daily report ──
@@ -113,6 +119,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client],
         id="daily_report",
         name="Daily Report",
+        misfire_grace_time=3600,
     )
 
     # ── Weekly inactive ping (Monday 8 AM) ──
@@ -125,6 +132,7 @@ def setup_jobs(scheduler: AsyncIOScheduler, client):
         args=[client],
         id="inactive_ping",
         name="Weekly Inactive Ping",
+        misfire_grace_time=3600,
     )
 
     log.info("All scheduled jobs registered")
@@ -399,8 +407,8 @@ async def _run_daily_audit(client):
 
 async def check_for_missed_windows(client):
     """
-    Safety check on startup: if Mac is turned on within 1 hour of a window's
-    start time, and no check-in exists for today, trigger it immediately.
+    Safety check on startup: if Mac is turned on within a window's
+    active time, and no check-in exists for today, trigger it immediately.
     """
     log.info("Running startup catch-up check...")
     now = tracker.now_ist()
@@ -412,15 +420,31 @@ async def check_for_missed_windows(client):
         start = now.replace(hour=times["start_hour"], minute=times["start_min"], second=0, microsecond=0)
         end = now.replace(hour=times["end_hour"], minute=times["end_min"], second=0, microsecond=0)
 
+        log.debug(f"Catch-up check: {window_name} window [{start.strftime('%H:%M')} - {end.strftime('%H:%M')}]. Current time: {now.strftime('%H:%M')}")
+
         if start <= now <= end:
             # Check if we already have pending checkins for this window today
+            # We also check if we already SENT or APPROVED checkins for this window today
+            # to avoid duplicate generation if the bot restarted.
             pending = await tracker.get_pending_checkins(window_name)
-            today_pending = [p for p in pending if p["created_at"].startswith(today)]
+            approved = await tracker.get_approved_unsent_checkins(window_name)
+            
+            # Use raw query or filter manually to see if ANY checkin was created today for this window
+            # (including those already sent)
+            async with tracker.aiosqlite.connect(tracker.DB_PATH) as db:
+                db.row_factory = tracker.aiosqlite.Row
+                cursor = await db.execute(
+                    "SELECT id FROM pending_checkins WHERE window = ? AND created_at LIKE ?",
+                    (window_name, f"{today}%")
+                )
+                today_exists = await cursor.fetchone()
 
-            if not today_pending:
-                log.info(f"Startup catch-up: Active {window_name} window detected. Triggering now.")
+            if not today_exists:
+                log.info(f"Startup catch-up: Active {window_name} window detected and no check-ins found for today. Triggering now.")
                 asyncio.create_task(_run_checkin_window(client, window_name))
                 return  # Only catch up one window at a time
+            else:
+                log.info(f"Startup catch-up: Active {window_name} window detected, but check-ins for today already exist. Skipping.")
 
     # ── 11 PM Audit Catch-up (if started between 11 PM and Midnight) ──
     audit_start = now.replace(hour=23, minute=0, second=0, microsecond=0)

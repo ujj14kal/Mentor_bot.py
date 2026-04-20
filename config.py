@@ -32,7 +32,7 @@ SESSION_NAME = "shraddha_session"
 # ─────────────────────────────────────────────────────────────
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_TEXT_MODEL = "llama-3.3-70b-versatile"
-GROQ_VISION_MODEL = "meta-llama/llama-4-maverick-17b-128e-instruct"
+GROQ_VISION_MODEL = "llama-3.2-11b-vision-preview"
 
 # ─────────────────────────────────────────────────────────────
 # GOOGLE SHEETS

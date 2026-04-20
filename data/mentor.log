@@ -96,3 +96,55 @@ cheduled jobs registered
 2026-04-20 05:13:39,201 | INFO    | modules.scheduler    | Running startup catch-up check...
 2026-04-20 05:13:39,488 | INFO    | mentor_system        | Mentor System is live and running
 2026-04-20 05:13:39,488 | INFO    | mentor_system        | Mentor System is live and running
+2026-04-20 05:16:46,631 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 05:16:46,631 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 05:16:55,723 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 05:17:09 IST)" was missed by 0:00:16.524773
+2026-04-20 05:16:55,723 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 05:17:09 IST)" was missed by 0:00:16.524773
+2026-04-20 05:17:13,234 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 05:17:39 IST)" was missed by 0:00:04.035961
+2026-04-20 05:17:13,234 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 05:17:39 IST)" was missed by 0:00:04.035961
+2026-04-20 05:17:20,969 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 05:17:20,969 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 06:23:27,301 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 06:23:39 IST)" was missed by 0:00:18.102588
+2026-04-20 06:23:27,301 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 06:23:39 IST)" was missed by 0:00:18.102588
+2026-04-20 06:40:44,244 | WARNING | telethon.network.connection.connection | Server closed the connection: [Errno 60] Operation timed out
+2026-04-20 06:40:44,244 | WARNING | telethon.network.connection.connection | Server closed the connection: [Errno 60] Operation timed out
+2026-04-20 06:40:44,246 | WARNING | telethon.network.mtprotosender | Attempt 1 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:40:44,246 | WARNING | telethon.network.mtprotosender | Attempt 1 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:40:45,249 | WARNING | telethon.network.mtprotosender | Attempt 2 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:40:45,249 | WARNING | telethon.network.mtprotosender | Attempt 2 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:06,081 | WARNING | telethon.network.mtprotosender | Attempt 3 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:06,081 | WARNING | telethon.network.mtprotosender | Attempt 3 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:07,084 | WARNING | telethon.network.mtprotosender | Attempt 4 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:07,084 | WARNING | telethon.network.mtprotosender | Attempt 4 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:08,086 | WARNING | telethon.network.mtprotosender | Attempt 5 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:08,086 | WARNING | telethon.network.mtprotosender | Attempt 5 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:08,783 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 06:58:09 IST)" was missed by 0:00:29.584590
+2026-04-20 06:58:08,783 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 06:58:09 IST)" was missed by 0:00:29.584590
+2026-04-20 06:58:08,783 | WARNING | apscheduler.executors.default | Run time of job "Inactive Student Check (trigger: cron[hour='6', minute='50'], next run at: 2026-04-21 06:50:00 IST)" was missed by 0:08:08.783679
+2026-04-20 06:58:08,783 | WARNING | apscheduler.executors.default | Run time of job "Inactive Student Check (trigger: cron[hour='6', minute='50'], next run at: 2026-04-21 06:50:00 IST)" was missed by 0:08:08.783679
+2026-04-20 06:58:09,089 | WARNING | telethon.network.mtprotosender | Attempt 6 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:09,089 | WARNING | telethon.network.mtprotosender | Attempt 6 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:11,095 | WARNING | telethon.network.mtprotosender | Attempt 1 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 06:58:11,095 | WARNING | telethon.network.mtprotosender | Attempt 1 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:00:44,913 | WARNING | telethon.network.mtprotosender | Attempt 2 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:00:44,913 | WARNING | telethon.network.mtprotosender | Attempt 2 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:00:45,915 | WARNING | telethon.network.mtprotosender | Attempt 3 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:00:45,915 | WARNING | telethon.network.mtprotosender | Attempt 3 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:00:46,924 | WARNING | telethon.network.mtprotosender | Attempt 4 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:00:46,924 | WARNING | telethon.network.mtprotosender | Attempt 4 at connecting failed: OSError: [Errno 51] Network is unreachable
+2026-04-20 07:00:57,773 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-04-20 07:00:57,773 | INFO    | httpx                | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-04-20 07:00:57,776 | ERROR   | modules.ai_engine    | Groq API error: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-04-20 07:00:57,776 | ERROR   | modules.ai_engine    | Groq API error: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-04-20 07:00:57,776 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-04-20 07:00:57,776 | ERROR   | modules.ai_engine    | extract_score_from_image parse error: Error code: 404 - {'error': {'message': 'The model `meta-llama/llama-4-maverick-17b-128e-instruct` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-04-20 07:00:57,776 | INFO    | modules.message_handler | Photo from Divyansh: type=unknown, value=
+2026-04-20 07:00:57,776 | INFO    | modules.message_handler | Photo from Divyansh: type=unknown, value=
+2026-04-20 07:01:12,016 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 07:01:39 IST)" was missed by 0:00:02.818292
+2026-04-20 07:01:12,016 | WARNING | apscheduler.executors.default | Run time of job "Reply Dispatcher (trigger: interval[0:00:30], next run at: 2026-04-20 07:01:39 IST)" was missed by 0:00:02.818292
+2026-04-20 07:01:12,017 | WARNING | apscheduler.executors.default | Run time of job "Morning Check-in (trigger: cron[hour='7', minute='0'], next run at: 2026-04-21 07:00:00 IST)" was missed by 0:01:12.017491
+2026-04-20 07:01:12,017 | WARNING | apscheduler.executors.default | Run time of job "Morning Check-in (trigger: cron[hour='7', minute='0'], next run at: 2026-04-21 07:00:00 IST)" was missed by 0:01:12.017491
+2026-04-20 07:02:12,052 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:02:12,052 | INFO    | mentor_system        | Saved Messages command received: Status
+2026-04-20 07:02:38,062 | INFO    | mentor_system        | Saved Messages command received: Yes
+2026-04-20 07:02:38,062 | INFO    | mentor_system        | Saved Messages command received: Yes
